@@ -13,6 +13,7 @@ export default function Manager() {
   const [nextText, setNextText] = useState("Start")
   const [state, setState] = useState({
     ...GAME_STATES,
+    created: false,
     status: {
       ...GAME_STATES.status,
       name: "SHOW_ROOM",
@@ -57,11 +58,7 @@ export default function Manager() {
       socket.off("manager:inviteCode")
       socket.leave("manager-global")
     }
-  }, [])
-
-  const handleCreate = () => {
-    socket.emit("manager:createRoom")
-  }
+  }, [socket])
 
   const handleSkip = () => {
     setNextText("Skip")
@@ -123,6 +120,9 @@ export default function Manager() {
           </GameWrapper>
         </>
       )}
+    </>
+  )
+}
     </>
   )
 }
