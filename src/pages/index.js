@@ -9,13 +9,13 @@ import Loader from "@/components/Loader"
 import { usePlayerContext } from "@/context/player"
 import Room from "@/components/game/join/Room"
 import Username from "@/components/game/join/Username"
-import { useSocketContext } from "@/context/socket"
+import { usePusherContext } from "@/context/pusher"
 import { useRouter } from "next/router"
 import toast from "react-hot-toast"
 
 export default function Home() {
   const { player, dispatch } = usePlayerContext()
-  const { socket } = useSocketContext()
+  const { socket } = usePusherContext()
   const router = useRouter()
   const [isAutoJoining, setIsAutoJoining] = useState(false)
   const [quickJoinStarted, setQuickJoinStarted] = useState(false)

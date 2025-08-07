@@ -1,8 +1,8 @@
-import { useSocketContext } from "@/context/socket"
+import { usePusherContext } from "@/context/pusher"
 import { useEffect, useState } from "react"
 
 export default function Room({ data: { text, inviteCode } }) {
-  const { socket } = useSocketContext()
+  const { socket } = usePusherContext()
   const [playerList, setPlayerList] = useState([])
 
   useEffect(() => {

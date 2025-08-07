@@ -1,14 +1,14 @@
 import GameWrapper from "@/components/game/GameWrapper"
 import { GAME_STATES, GAME_STATE_COMPONENTS } from "@/constants"
 import { usePlayerContext } from "@/context/player"
-import { useSocketContext } from "@/context/socket"
+import { usePusherContext } from "@/context/pusher"
 import { useRouter } from "next/router"
 import { createElement, useEffect, useState } from "react"
 import toast from "react-hot-toast"
 
 export default function Game() {
   const router = useRouter()
-  const { socket } = useSocketContext()
+  const { socket } = usePusherContext()
   const { player, dispatch } = usePlayerContext()
 
   // Only redirect if there's no player and no attempt to join

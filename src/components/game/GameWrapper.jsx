@@ -2,12 +2,12 @@ import Image from "next/image"
 import Button from "@/components/Button"
 import background from "@/assets/background.webp"
 import { usePlayerContext } from "@/context/player"
-import { useSocketContext } from "@/context/socket"
+import { usePusherContext } from "@/context/pusher"
 import { useEffect, useState } from "react"
 import { useRouter } from "next/router"
 
 export default function GameWrapper({ children, textNext, onNext, manager }) {
-  const { socket } = useSocketContext()
+  const { socket } = usePusherContext()
   const { player, dispatch } = usePlayerContext()
   const router = useRouter()
 

@@ -3,11 +3,11 @@ import Form from "@/components/Form"
 import Button from "@/components/Button"
 import Input from "@/components/Input"
 import { useEffect, useState } from "react"
-import { useSocketContext } from "@/context/socket"
+import { usePusherContext } from "@/context/pusher"
 import { useRouter } from "next/router"
 
 export default function Username() {
-  const { socket } = useSocketContext()
+  const { socket } = usePusherContext()
   const { player, dispatch } = usePlayerContext()
   const router = useRouter()
   const [username, setUsername] = useState("")

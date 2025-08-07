@@ -3,9 +3,10 @@ import Form from "@/components/Form"
 import Button from "@/components/Button"
 import Input from "@/components/Input"
 import { useEffect, useState } from "react"
-import { socket } from "@/context/socket"
+import { usePusherContext } from "@/context/pusher"
 
 export default function Room() {
+  const { socket } = usePusherContext()
   const { player, dispatch } = usePlayerContext()
   const [roomId, setRoomId] = useState("")
 

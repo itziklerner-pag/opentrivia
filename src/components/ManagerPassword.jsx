@@ -4,16 +4,31 @@ import Form from "@/components/Form"
 import Button from "@/components/Button"
 import Input from "@/components/Input"
 import { useEffect, useState } from "react"
-import { socket } from "@/context/socket"
+import { usePusherContext } from "@/context/pusher"
 import logo from "@/assets/logo.svg"
 import toast from "react-hot-toast"
 
 export default function ManagerPassword() {
+  const { socket } = usePusherContext()
   const [loading, setLoading] = useState(false)
   const [password, setPassword] = useState("")
 
-  const handleCreate = () => {
-    socket.emit("manager:createRoom", password)
+  const handleCreate = async () => {
+    setLoading(true)
+    try {
+      const result = await socket.emit("manager:createRoom", password)
+      if (result.success) {
+        // Success will be handled by the room:created event
+        console.log('Room created:', result.roomId)
+      } else {
+        toast.error(result.error || 'Failed to create room')
+      }
+    } catch (error) {
+      toast.error('Failed to create room')
+      console.error('Error creating room:', error)
+    } finally {
+      setLoading(false)
+    }
   }
 
   const handleKeyDown = (event) => {

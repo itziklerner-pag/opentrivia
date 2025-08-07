@@ -1,6 +1,6 @@
 import Toaster from "@/components/Toaster"
 import { PlayerContextProvider } from "@/context/player"
-import { SocketContextProvider } from "@/context/socket"
+import { PusherContextProvider } from "@/context/pusher"
 import "@/styles/globals.css"
 import clsx from "clsx"
 import { Montserrat, Plaster } from "next/font/google"
@@ -15,7 +15,7 @@ export default function App({ Component, pageProps }) {
         <link rel="shortcut icon" href="/icon.svg" />
         <title>Rahoot !</title>
       </Head>
-      <SocketContextProvider>
+      <PusherContextProvider>
         <PlayerContextProvider>
           <main
             className={clsx(
@@ -26,7 +26,7 @@ export default function App({ Component, pageProps }) {
             <Component {...pageProps} />
           </main>
         </PlayerContextProvider>
-      </SocketContextProvider>
+      </PusherContextProvider>
       <Toaster />
     </>
   )

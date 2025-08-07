@@ -1,4 +1,13 @@
-export const WEBSOCKET_PUBLIC_URL = "http://localhost:5505/"
+// Pusher Configuration
+export const PUSHER_CONFIG = {
+  key: process.env.NEXT_PUBLIC_PUSHER_KEY || '4749f069a99aaecef0a6',
+  cluster: process.env.NEXT_PUBLIC_PUSHER_CLUSTER || 'mt1'
+}
+
+// Keep for backward compatibility during migration
+export const WEBSOCKET_PUBLIC_URL = process.env.NODE_ENV === 'production' 
+  ? "wss://opentrivia-socket-server.railway.app/"
+  : "http://localhost:5505/"
 export const WEBSOCKET_SERVER_PORT = 5505
 
 const QUIZZ_CONFIG = {

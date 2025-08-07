@@ -1,5 +1,5 @@
 import AnswerButton from "../../AnswerButton"
-import { useSocketContext } from "@/context/socket"
+import { usePusherContext } from "@/context/pusher"
 import { useEffect, useRef, useState } from "react"
 import clsx from "clsx"
 import {
@@ -37,7 +37,7 @@ const calculatePercentages = (objectResponses) => {
 export default function Answers({
   data: { question, answers, image, time, responses, correct },
 }) {
-  const { socket } = useSocketContext()
+  const { socket } = usePusherContext()
   const { player } = usePlayerContext()
 
   const [percentages, setPercentages] = useState([])

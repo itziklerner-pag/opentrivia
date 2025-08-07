@@ -1,11 +1,11 @@
 import { SFX_BOUMP_SOUND } from "@/constants"
-import { useSocketContext } from "@/context/socket"
+import { usePusherContext } from "@/context/pusher"
 import clsx from "clsx"
 import { useEffect, useState } from "react"
 import useSound from "use-sound"
 
 export default function Start({ data: { time, subject } }) {
-  const { socket } = useSocketContext()
+  const { socket } = usePusherContext()
   const [showTitle, setShowTitle] = useState(true)
   const [cooldown, setCooldown] = useState(time)
 

@@ -3,12 +3,12 @@ import GameWrapper from "@/components/game/GameWrapper"
 import ManagerPassword from "@/components/ManagerPassword"
 import { GAME_STATES, GAME_STATE_COMPONENTS_MANAGER } from "@/constants"
 import { usePlayerContext } from "@/context/player"
-import { useSocketContext } from "@/context/socket"
+import { usePusherContext } from "@/context/pusher"
 import { useRouter } from "next/router"
 import { createElement, useEffect, useState } from "react"
 
 export default function Manager() {
-  const { socket } = useSocketContext()
+  const { socket } = usePusherContext()
 
   const [nextText, setNextText] = useState("Start")
   const [state, setState] = useState({
