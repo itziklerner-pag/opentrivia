@@ -20,40 +20,40 @@ export default function Manager() {
   })
 
   useEffect(() => {
-    console.log('Manager: Setting up event handlers, state.created:', state.created)
+    console.log('Manager: Setting up event handlers')
     
     socket.on("game:status", (status) => {
       console.log('Manager: Received game:status', status)
-      setState({
-        ...state,
+      setState(prevState => ({
+        ...prevState,
         status: status,
         question: {
-          ...state.question,
+          ...prevState.question,
           current: status.question,
         },
-      })
+      }))
     })
 
     socket.on("manager:inviteCode", (inviteCode) => {
       console.log('Manager: Received manager:inviteCode', inviteCode)
-      setState({
-        ...state,
+      setState(prevState => ({
+        ...prevState,
         created: true,
         status: {
-          ...state.status,
+          ...prevState.status,
           data: {
-            ...state.status.data,
+            ...prevState.status.data,
             inviteCode: inviteCode,
           },
         },
-      })
+      }))
     })
 
     return () => {
       socket.off("game:status")
       socket.off("manager:inviteCode")
     }
-  }, [state])
+  }, [])
 
   const handleCreate = () => {
     socket.emit("manager:createRoom")
