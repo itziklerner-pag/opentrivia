@@ -96,6 +96,9 @@ async function handleCreateRoom(password, res) {
   console.log('Sending manager:inviteCode to channel:', `room-${roomId}-manager`, 'with roomId:', roomId)
   await pusher.trigger(`room-${roomId}-manager`, 'manager:inviteCode', roomId)
   
+  // Also send to global manager channel to ensure delivery
+  await pusher.trigger('manager-global', 'manager:inviteCode', roomId)
+  
   res.json({ success: true, roomId, room })
 }
 

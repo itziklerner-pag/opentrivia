@@ -22,6 +22,9 @@ export default function Manager() {
   useEffect(() => {
     console.log('Manager: Setting up event handlers')
     
+    // Pre-subscribe to a global manager channel to ensure we receive events
+    socket.join("manager-global")
+    
     socket.on("game:status", (status) => {
       console.log('Manager: Received game:status', status)
       setState(prevState => ({
@@ -52,6 +55,7 @@ export default function Manager() {
     return () => {
       socket.off("game:status")
       socket.off("manager:inviteCode")
+      socket.leave("manager-global")
     }
   }, [])
 
