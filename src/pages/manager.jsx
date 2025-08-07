@@ -85,11 +85,26 @@ export default function Manager() {
     }
   }
 
+  const handleRoomCreated = (roomId) => {
+    console.log('Manager: Room created callback with roomId:', roomId)
+    setState(prevState => ({
+      ...prevState,
+      created: true,
+      status: {
+        ...prevState.status,
+        data: {
+          ...prevState.status.data,
+          inviteCode: roomId,
+        },
+      },
+    }))
+  }
+
   return (
     <>
       {!state.created ? (
         <div>
-          <ManagerPassword />
+          <ManagerPassword onRoomCreated={handleRoomCreated} />
         </div>
       ) : (
         <>

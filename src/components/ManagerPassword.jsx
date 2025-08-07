@@ -8,7 +8,7 @@ import { usePusherContext } from "@/context/pusher"
 import logo from "@/assets/logo.svg"
 import toast from "react-hot-toast"
 
-export default function ManagerPassword() {
+export default function ManagerPassword({ onRoomCreated }) {
   const { socket } = usePusherContext()
   const [loading, setLoading] = useState(false)
   const [password, setPassword] = useState("")
@@ -22,6 +22,10 @@ export default function ManagerPassword() {
       if (result.success) {
         // Success will be handled by the room:created event
         console.log('ManagerPassword: Room created successfully:', result.roomId)
+        // Directly call the callback to transition to manager interface
+        if (onRoomCreated) {
+          onRoomCreated(result.roomId)
+        }
       } else {
         toast.error(result.error || 'Failed to create room')
       }
