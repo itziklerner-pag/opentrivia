@@ -16,16 +16,18 @@ export default function ManagerPassword() {
   const handleCreate = async () => {
     setLoading(true)
     try {
+      console.log('ManagerPassword: Creating room with password:', password)
       const result = await socket.emit("manager:createRoom", password)
+      console.log('ManagerPassword: Got result:', result)
       if (result.success) {
         // Success will be handled by the room:created event
-        console.log('Room created:', result.roomId)
+        console.log('ManagerPassword: Room created successfully:', result.roomId)
       } else {
         toast.error(result.error || 'Failed to create room')
       }
     } catch (error) {
       toast.error('Failed to create room')
-      console.error('Error creating room:', error)
+      console.error('ManagerPassword: Error creating room:', error)
     } finally {
       setLoading(false)
     }

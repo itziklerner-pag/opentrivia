@@ -64,10 +64,12 @@ export const PusherContextProvider = ({ children }) => {
       },
       
       on: (event, handler) => {
+        console.log('Pusher: Registering event handler for:', event)
         eventHandlersRef.current[event] = handler
         
         // Bind to all existing channels
         Object.values(channelsRef.current).forEach(channel => {
+          console.log('Pusher: Binding event', event, 'to existing channel')
           channel.bind(event, handler)
         })
       },
@@ -81,12 +83,14 @@ export const PusherContextProvider = ({ children }) => {
       },
       
       join: (channelName) => {
+        console.log('Pusher: Joining channel:', channelName)
         if (!channelsRef.current[channelName]) {
           const channel = pusherClient.subscribe(channelName)
           channelsRef.current[channelName] = channel
           
           // Bind all registered event handlers to this channel
           Object.entries(eventHandlersRef.current).forEach(([eventName, handler]) => {
+            console.log('Pusher: Binding event', eventName, 'to new channel', channelName)
             channel.bind(eventName, handler)
           })
         }

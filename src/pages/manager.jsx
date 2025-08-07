@@ -20,7 +20,10 @@ export default function Manager() {
   })
 
   useEffect(() => {
+    console.log('Manager: Setting up event handlers, state.created:', state.created)
+    
     socket.on("game:status", (status) => {
+      console.log('Manager: Received game:status', status)
       setState({
         ...state,
         status: status,
@@ -32,6 +35,7 @@ export default function Manager() {
     })
 
     socket.on("manager:inviteCode", (inviteCode) => {
+      console.log('Manager: Received manager:inviteCode', inviteCode)
       setState({
         ...state,
         created: true,
