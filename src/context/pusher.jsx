@@ -69,19 +69,39 @@ export const PusherContextProvider = ({ children }) => {
         console.log('Pusher: Registering event handler for:', event)
         eventHandlersRef.current[event] = handler
         
+        // Create a wrapper that calls both the specific handler and onAny
+        const wrappedHandler = (...args) => {
+          // Call the specific event handler
+          handler(...args)
+          
+          // Call the onAny handler if it exists
+          if (eventHandlersRef.current._onAny) {
+            eventHandlersRef.current._onAny(event, ...args)
+          }
+        }
+        
+        // Store the wrapped handler for later unbinding
+        eventHandlersRef.current[`_wrapped_${event}`] = wrappedHandler
+        
         // Bind to all existing channels
         Object.values(channelsRef.current).forEach(channel => {
           console.log('Pusher: Binding event', event, 'to existing channel')
-          channel.bind(event, handler)
+          channel.bind(event, wrappedHandler)
         })
       },
       
       off: (event) => {
-        // Unbind from all channels
+        // Unbind from all channels using the wrapped handler
+        const wrappedHandler = eventHandlersRef.current[`_wrapped_${event}`]
         Object.values(channelsRef.current).forEach(channel => {
-          channel.unbind(event)
+          if (wrappedHandler) {
+            channel.unbind(event, wrappedHandler)
+          } else {
+            channel.unbind(event)
+          }
         })
         delete eventHandlersRef.current[event]
+        delete eventHandlersRef.current[`_wrapped_${event}`]
       },
       
       join: (channelName) => {
@@ -92,8 +112,12 @@ export const PusherContextProvider = ({ children }) => {
           
           // Bind all registered event handlers to this channel
           Object.entries(eventHandlersRef.current).forEach(([eventName, handler]) => {
+            // Skip internal handlers and use wrapped handlers where available
+            if (eventName.startsWith('_')) return
+            
+            const wrappedHandler = eventHandlersRef.current[`_wrapped_${eventName}`]
             console.log('Pusher: Binding event', eventName, 'to new channel', channelName)
-            channel.bind(eventName, handler)
+            channel.bind(eventName, wrappedHandler || handler)
           })
         }
         return channelsRef.current[channelName]
@@ -104,6 +128,11 @@ export const PusherContextProvider = ({ children }) => {
           pusherClient.unsubscribe(channelName)
           delete channelsRef.current[channelName]
         }
+      },
+      
+      onAny: (handler) => {
+        // Store the global event handler
+        eventHandlersRef.current._onAny = handler
       },
       
       connected,
@@ -122,7 +151,11 @@ export const PusherContextProvider = ({ children }) => {
     if (pusher && eventHandlersRef.current) {
       Object.values(channelsRef.current).forEach(channel => {
         Object.entries(eventHandlersRef.current).forEach(([eventName, handler]) => {
-          channel.bind(eventName, handler)
+          // Skip internal handlers and use wrapped handlers where available
+          if (eventName.startsWith('_')) return
+          
+          const wrappedHandler = eventHandlersRef.current[`_wrapped_${eventName}`]
+          channel.bind(eventName, wrappedHandler || handler)
         })
       })
     }
