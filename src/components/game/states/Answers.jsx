@@ -108,6 +108,26 @@ export default function Answers({
     }
   }, [sfxPop])
 
+  useEffect(() => {
+    const handleKeyPress = (event) => {
+      if (responses) return // Don't allow keyboard input when results are showing
+      
+      const key = event.key
+      if (key >= '1' && key <= '4') {
+        const answerIndex = parseInt(key) - 1
+        if (answerIndex < answers.length) {
+          handleAnswer(answerIndex)
+        }
+      }
+    }
+
+    window.addEventListener('keydown', handleKeyPress)
+    
+    return () => {
+      window.removeEventListener('keydown', handleKeyPress)
+    }
+  }, [answers, responses, handleAnswer])
+
   return (
     <div className="flex h-full flex-1 flex-col justify-between">
       <div className="mx-auto inline-flex h-full w-full max-w-7xl flex-1 flex-col items-center justify-center gap-5">
@@ -155,7 +175,7 @@ export default function Answers({
           </div>
         )}
 
-        <div className="mx-auto mb-4 grid w-full max-w-7xl grid-cols-2 gap-1 rounded-full px-2 text-lg font-bold text-white md:text-xl">
+        <div className="mx-auto mb-4 grid w-full max-w-7xl grid-cols-4 gap-1 rounded-full px-2 text-lg font-bold text-white md:text-xl">
           {answers.map((answer, key) => (
             <AnswerButton
               key={key}
