@@ -53,13 +53,21 @@ io.on("connection", (socket) => {
   socket.on("disconnect", () => {
     console.log(`user disconnected ${socket.id}`)
     if (gameState.manager === socket.id) {
-      console.log("Reset game")
-      io.to(gameState.room).emit("game:reset")
-      gameState.started = false
-      gameState = deepClone(GAME_STATE_INIT)
-
-      abortCooldown()
-
+      console.log("Manager disconnected, waiting 10 seconds before reset...")
+      // Give manager 10 seconds to reconnect before resetting game
+      setTimeout(() => {
+        // Check if manager has reconnected
+        const managerSocket = io.sockets.sockets.get(gameState.manager)
+        if (!managerSocket || !managerSocket.connected) {
+          console.log("Manager didn't reconnect, resetting game")
+          io.to(gameState.room).emit("game:reset")
+          gameState.started = false
+          gameState = deepClone(GAME_STATE_INIT)
+          abortCooldown()
+        } else {
+          console.log("Manager reconnected, keeping game active")
+        }
+      }, 10000)
       return
     }
 

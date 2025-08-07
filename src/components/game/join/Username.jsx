@@ -23,19 +23,20 @@ export default function Username() {
   }
 
   useEffect(() => {
-    socket.on("game:successJoin", () => {
+    const handleSuccessJoin = () => {
       dispatch({
         type: "LOGIN",
         payload: username,
       })
-
       router.replace("/game")
-    })
+    }
+
+    socket.on("game:successJoin", handleSuccessJoin)
 
     return () => {
-      socket.off("game:successJoin")
+      socket.off("game:successJoin", handleSuccessJoin)
     }
-  }, [username])
+  }, [username, socket, dispatch, router])
 
   return (
     <Form>

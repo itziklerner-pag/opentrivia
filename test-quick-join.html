@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quick Join Test</title>
+</head>
+<body>
+    <h1>Quick Join Test</h1>
+    <p>Testing the new bulletproof quick join functionality:</p>
+    
+    <h2>Test Links:</h2>
+    <ul>
+        <li><a href="http://localhost:3001/?pin=647271&name=Alice" target="_blank">Join with PIN 647271 as Alice</a></li>
+        <li><a href="http://localhost:3001/?pin=123456&name=Bob" target="_blank">Join with PIN 123456 as Bob</a></li>
+    </ul>
+    
+    <h2>How it works:</h2>
+    <ol>
+        <li>URL parameters are extracted on the home page</li>
+        <li>Home page auto-initiates the join process</li>
+        <li>Shows loading spinner with join details</li>
+        <li>On successful join, redirects to /game</li>
+        <li>On error, shows toast and stays on home page</li>
+    </ol>
+    
+    <p><strong>Note:</strong> Make sure the manager has a room ready with PIN 647271 for testing.</p>
+</body>
+</html>

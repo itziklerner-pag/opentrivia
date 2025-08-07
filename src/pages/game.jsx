@@ -8,12 +8,13 @@ import toast from "react-hot-toast"
 
 export default function Game() {
   const router = useRouter()
-
   const { socket } = useSocketContext()
   const { player, dispatch } = usePlayerContext()
 
+  // Only redirect if there's no player and no attempt to join
   useEffect(() => {
     if (!player) {
+      console.log("No player found, redirecting to home")
       router.replace("/")
     }
   }, [])
@@ -46,6 +47,11 @@ export default function Game() {
       socket.off("game:reset")
     }
   }, [state])
+
+  // Don't render anything if no player (will redirect)
+  if (!player) {
+    return null
+  }
 
   return (
     <GameWrapper>
