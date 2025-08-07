@@ -24,7 +24,10 @@ export default function ManagerPassword({ onRoomCreated }) {
         console.log('ManagerPassword: Room created successfully:', result.roomId)
         // Directly call the callback to transition to manager interface
         if (onRoomCreated) {
+          console.log('ManagerPassword: Calling onRoomCreated callback with:', result.roomId)
           onRoomCreated(result.roomId)
+        } else {
+          console.log('ManagerPassword: No onRoomCreated callback provided')
         }
       } else {
         toast.error(result.error || 'Failed to create room')

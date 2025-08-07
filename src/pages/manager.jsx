@@ -87,19 +87,26 @@ export default function Manager() {
 
   const handleRoomCreated = (roomId) => {
     console.log('Manager: Room created callback with roomId:', roomId)
-    setState(prevState => ({
-      ...prevState,
-      created: true,
-      status: {
-        ...prevState.status,
-        data: {
-          ...prevState.status.data,
-          inviteCode: roomId,
+    console.log('Manager: Current state before update:', state)
+    setState(prevState => {
+      const newState = {
+        ...prevState,
+        created: true,
+        status: {
+          ...prevState.status,
+          data: {
+            ...prevState.status.data,
+            inviteCode: roomId,
+          },
         },
-      },
-    }))
+      }
+      console.log('Manager: New state after update:', newState)
+      return newState
+    })
   }
 
+  console.log('Manager: Rendering with state.created =', state.created, 'state =', state)
+  
   return (
     <>
       {!state.created ? (
