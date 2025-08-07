@@ -49,9 +49,11 @@ export const PusherContextProvider = ({ children }) => {
           
           // Auto-subscribe to room channels based on response
           if (result.roomId && event.includes('Room')) {
+            console.log('Auto-subscribing to room channel:', `room-${result.roomId}`)
             socketInterface.join(`room-${result.roomId}`)
             // Also subscribe to manager channel for manager events
             if (event === 'manager:createRoom') {
+              console.log('Auto-subscribing to manager channel:', `room-${result.roomId}-manager`)
               socketInterface.join(`room-${result.roomId}-manager`)
             }
           }

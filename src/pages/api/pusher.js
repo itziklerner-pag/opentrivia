@@ -93,6 +93,7 @@ async function handleCreateRoom(password, res) {
   })
   
   // Send invite code to manager (compatible with original Socket.IO interface)
+  console.log('Sending manager:inviteCode to channel:', `room-${roomId}-manager`, 'with roomId:', roomId)
   await pusher.trigger(`room-${roomId}-manager`, 'manager:inviteCode', roomId)
   
   res.json({ success: true, roomId, room })
