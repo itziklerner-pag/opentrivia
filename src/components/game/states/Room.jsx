@@ -6,24 +6,45 @@ export default function Room({ data: { text, inviteCode } }) {
   const [playerList, setPlayerList] = useState([])
 
   useEffect(() => {
-    socket.on("manager:newPlayer", (player) => {
-      setPlayerList([...playerList, player])
-    })
+    console.log('Room: Setting up player event handlers for room:', inviteCode)
+    
+    // Subscribe to room-specific manager channel
+    socket.join(`room-${inviteCode}-manager`)
+    
+    // Use functional updates to avoid stale closure issues
+    const handleNewPlayer = (player) => {
+      console.log('Room: Received manager:newPlayer:', player)
+      setPlayerList(prevPlayers => {
+        // Avoid duplicates
+        if (prevPlayers.find(p => p.id === player.id)) {
+          return prevPlayers
+        }
+        return [...prevPlayers, player]
+      })
+    }
 
-    socket.on("manager:removePlayer", (playerId) => {
-      setPlayerList(playerList.filter((p) => p.id !== playerId))
-    })
+    const handleRemovePlayer = (playerId) => {
+      console.log('Room: Received manager:removePlayer:', playerId)
+      setPlayerList(prevPlayers => prevPlayers.filter((p) => p.id !== playerId))
+    }
 
-    socket.on("manager:playerKicked", (playerId) => {
-      setPlayerList(playerList.filter((p) => p.id !== playerId))
-    })
+    const handlePlayerKicked = (playerId) => {
+      console.log('Room: Received manager:playerKicked:', playerId)
+      setPlayerList(prevPlayers => prevPlayers.filter((p) => p.id !== playerId))
+    }
+
+    socket.on("manager:newPlayer", handleNewPlayer)
+    socket.on("manager:removePlayer", handleRemovePlayer)
+    socket.on("manager:playerKicked", handlePlayerKicked)
 
     return () => {
+      console.log('Room: Cleaning up event handlers')
       socket.off("manager:newPlayer")
       socket.off("manager:removePlayer")
       socket.off("manager:playerKicked")
+      socket.leave(`room-${inviteCode}-manager`)
     }
-  }, [playerList])
+  }, [inviteCode, socket]) // Remove playerList from dependencies to fix stale closure
 
   return (
     <section className="relative mx-auto flex w-full max-w-7xl flex-1 flex-col items-center justify-center px-2">

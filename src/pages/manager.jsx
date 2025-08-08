@@ -18,7 +18,37 @@ export default function Manager() {
       ...GAME_STATES.status,
       name: "SHOW_ROOM",
     },
+    question: {
+      ...GAME_STATES.question,
+      total: 7, // Set total questions from config
+    },
   })
+  
+  // Update button text based on current state
+  useEffect(() => {
+    switch (state.status.name) {
+      case "SHOW_ROOM":
+        setNextText("Start Game")
+        break
+      case "SHOW_QUESTION":
+        setNextText("Skip Question")
+        break
+      case "SELECT_ANSWER":
+        setNextText("Show Results")
+        break
+      case "SHOW_RESPONSES":
+        setNextText("Show Leaderboard")
+        break
+      case "SHOW_LEADERBOARD":
+        setNextText("Next Question")
+        break
+      case "FINISH":
+        setNextText("Game Complete")
+        break
+      default:
+        setNextText("Continue")
+    }
+  }, [state.status.name])
 
   useEffect(() => {
     console.log('Manager: Setting up event handlers')
@@ -28,18 +58,25 @@ export default function Manager() {
     
     socket.on("game:status", (status) => {
       console.log('Manager: Received game:status', status)
+      console.log('Manager: Previous state was:', state.status.name)
+      console.log('Manager: Transitioning to:', status.name)
       setState(prevState => ({
         ...prevState,
         status: status,
         question: {
           ...prevState.question,
           current: status.question,
+          total: prevState.question.total, // Preserve total questions
         },
       }))
     })
 
     socket.on("manager:inviteCode", (inviteCode) => {
       console.log('Manager: Received manager:inviteCode', inviteCode)
+      // Subscribe to the room-specific manager channel immediately
+      socket.join(`room-${inviteCode}-manager`)
+      console.log('Manager: Subscribed to channel:', `room-${inviteCode}-manager`)
+      
       setState(prevState => ({
         ...prevState,
         created: true,
@@ -57,28 +94,50 @@ export default function Manager() {
       socket.off("game:status")
       socket.off("manager:inviteCode")
       socket.leave("manager-global")
+      // Leave room-specific channel if we have an invite code
+      if (state.status.data.inviteCode) {
+        socket.leave(`room-${state.status.data.inviteCode}-manager`)
+      }
     }
   }, [socket])
 
   const handleSkip = () => {
-    setNextText("Skip")
-
+    console.log('Manager: handleSkip called with state:', state.status.name)
+    
     switch (state.status.name) {
       case "SHOW_ROOM":
-        socket.emit("manager:startGame")
+        setNextText("Starting...")
+        socket.emit("manager:startGame", { roomId: state.status.data.inviteCode })
+        break
+
+      case "SHOW_QUESTION":
+        setNextText("Skipping...")
+        // Skip directly to answers
+        socket.emit("manager:abortQuiz", { roomId: state.status.data.inviteCode })
         break
 
       case "SELECT_ANSWER":
-        socket.emit("manager:abortQuiz")
+        setNextText("Skipping...")
+        socket.emit("manager:abortQuiz", { roomId: state.status.data.inviteCode })
         break
 
       case "SHOW_RESPONSES":
-        socket.emit("manager:showLeaderboard")
+        setNextText("Next...")
+        socket.emit("manager:showLeaderboard", { roomId: state.status.data.inviteCode })
         break
 
       case "SHOW_LEADERBOARD":
-        socket.emit("manager:nextQuestion")
+        setNextText("Next Question...")
+        socket.emit("manager:nextQuestion", { roomId: state.status.data.inviteCode })
         break
+        
+      case "FINISH":
+        setNextText("Finished")
+        // Game is complete, maybe reset or show options
+        break
+        
+      default:
+        console.log('Manager: Unknown state for handleSkip:', state.status.name)
     }
   }
 

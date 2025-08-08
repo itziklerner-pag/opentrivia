@@ -10,8 +10,33 @@ export default function Room() {
   const { player, dispatch } = usePlayerContext()
   const [roomId, setRoomId] = useState("")
 
-  const handleLogin = () => {
-    socket.emit("player:checkRoom", roomId)
+  const handleSuccessRoom = (validatedRoomId) => {
+    console.log("✅ Room validated successfully:", validatedRoomId)
+    // Create a proper player object with the room set
+    dispatch({ 
+      type: "JOIN", 
+      payload: { room: validatedRoomId }
+    })
+  }
+
+  const handleLogin = async () => {
+    if (!roomId || roomId.length === 0) {
+      return
+    }
+    
+    if (!socket) {
+      return
+    }
+    
+    console.log("🔍 Checking room:", roomId)
+    
+    // Emit PIN check and get API response
+    const apiResult = await socket.emit("player:checkRoom", roomId)
+    
+    // If successful, trigger the state change to show Username component
+    if (apiResult && apiResult.success) {
+      handleSuccessRoom(apiResult.roomId)
+    }
   }
 
   const handleKeyDown = (event) => {
@@ -21,14 +46,17 @@ export default function Room() {
   }
 
   useEffect(() => {
-    socket.on("game:successRoom", (roomId) => {
-      dispatch({ type: "JOIN", payload: roomId })
-    })
-
-    return () => {
-      socket.off("game:successRoom")
+    if (socket) {
+      socket.join("global")
+      
+      // Listen for Pusher events as backup/primary method
+      socket.on("game:successRoom", handleSuccessRoom)
+      
+      return () => {
+        socket.off("game:successRoom", handleSuccessRoom)
+      }
     }
-  }, [])
+  }, [socket])
 
   return (
     <Form>

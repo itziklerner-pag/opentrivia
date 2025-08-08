@@ -35,6 +35,14 @@ export const PusherContextProvider = ({ children }) => {
     // Create Socket.IO-like interface
     const socketInterface = {
       emit: async (event, data) => {
+        console.log('🚀 PUSHER: Emitting event:', event, 'with data:', data)
+        
+        // Ensure we're subscribed to global channel before emitting events that expect global responses
+        if (event.includes('player:') && !channelsRef.current['global']) {
+          console.log('🌍 PUSHER: Ensuring global channel subscription before player event')
+          socketInterface.join('global')
+        }
+        
         // Send to backend API route that will trigger Pusher events
         try {
           const response = await fetch('/api/pusher', {
@@ -46,6 +54,7 @@ export const PusherContextProvider = ({ children }) => {
           })
           
           const result = await response.json()
+          console.log('📡 PUSHER: API response:', result)
           
           // Auto-subscribe to room channels based on response
           if (result.roomId && event.includes('Room')) {
@@ -66,11 +75,13 @@ export const PusherContextProvider = ({ children }) => {
       },
       
       on: (event, handler) => {
-        console.log('Pusher: Registering event handler for:', event)
+        console.log('📝 PUSHER: Registering event handler for:', event)
         eventHandlersRef.current[event] = handler
         
         // Create a wrapper that calls both the specific handler and onAny
         const wrappedHandler = (...args) => {
+          console.log('🎯 PUSHER: Event received:', event, 'with args:', args)
+          
           // Call the specific event handler
           handler(...args)
           
@@ -85,12 +96,19 @@ export const PusherContextProvider = ({ children }) => {
         
         // Bind to all existing channels
         Object.values(channelsRef.current).forEach(channel => {
-          console.log('Pusher: Binding event', event, 'to existing channel')
+          console.log('🔗 PUSHER: Binding event', event, 'to existing channel')
           channel.bind(event, wrappedHandler)
         })
+        
+        // Ensure we're subscribed to global channel for global events
+        if (!channelsRef.current['global']) {
+          console.log('🌍 PUSHER: Auto-subscribing to global channel for event:', event)
+          socketInterface.join('global')
+        }
       },
       
       off: (event) => {
+        console.log('❌ PUSHER: Removing event handler for:', event)
         // Unbind from all channels using the wrapped handler
         const wrappedHandler = eventHandlersRef.current[`_wrapped_${event}`]
         Object.values(channelsRef.current).forEach(channel => {
@@ -105,7 +123,7 @@ export const PusherContextProvider = ({ children }) => {
       },
       
       join: (channelName) => {
-        console.log('Pusher: Joining channel:', channelName)
+        console.log('🚪 PUSHER: Joining channel:', channelName)
         if (!channelsRef.current[channelName]) {
           const channel = pusherClient.subscribe(channelName)
           channelsRef.current[channelName] = channel
@@ -116,7 +134,7 @@ export const PusherContextProvider = ({ children }) => {
             if (eventName.startsWith('_')) return
             
             const wrappedHandler = eventHandlersRef.current[`_wrapped_${eventName}`]
-            console.log('Pusher: Binding event', eventName, 'to new channel', channelName)
+            console.log('🔗 PUSHER: Binding event', eventName, 'to new channel', channelName)
             channel.bind(eventName, wrappedHandler || handler)
           })
         }
@@ -124,6 +142,7 @@ export const PusherContextProvider = ({ children }) => {
       },
       
       leave: (channelName) => {
+        console.log('🚪 PUSHER: Leaving channel:', channelName)
         if (channelsRef.current[channelName]) {
           pusherClient.unsubscribe(channelName)
           delete channelsRef.current[channelName]
@@ -131,15 +150,28 @@ export const PusherContextProvider = ({ children }) => {
       },
       
       onAny: (handler) => {
+        console.log('👀 PUSHER: Setting up onAny handler')
         // Store the global event handler
         eventHandlersRef.current._onAny = handler
       },
       
+      offAny: () => {
+        console.log('👀 PUSHER: Removing onAny handler')
+        delete eventHandlersRef.current._onAny
+      },
+      
       connected,
-      disconnect: () => pusherClient.disconnect()
+      disconnect: () => {
+        console.log('🔌 PUSHER: Disconnecting')
+        pusherClient.disconnect()
+      }
     }
 
     setPusher(socketInterface)
+
+    // Auto-subscribe to global channel immediately (no delay!)
+    console.log('🌍 PUSHER: Auto-subscribing to global channel on startup (immediate)')
+    socketInterface.join('global')
 
     return () => {
       pusherClient.disconnect()
@@ -178,6 +210,8 @@ export function usePusherContext() {
     off: () => {},
     join: () => {},
     leave: () => {},
+    onAny: () => {},
+    offAny: () => {},
     connected: false,
     disconnect: () => {}
   }

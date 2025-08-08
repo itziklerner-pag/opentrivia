@@ -5,7 +5,14 @@ export const PlayerContext = createContext()
 export function playerReducer(state, action) {
   switch (action.type) {
     case "JOIN":
-      return { player: { ...state.player, room: action.payload } }
+      // Handle both old format (string) and new format (object)
+      const roomId = typeof action.payload === 'string' ? action.payload : action.payload.room
+      return { 
+        player: { 
+          ...(state.player || {}), 
+          room: roomId 
+        } 
+      }
     case "LOGIN":
       return {
         player: {

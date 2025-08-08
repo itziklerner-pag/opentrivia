@@ -1,0 +1,2012 @@
+
+> rahoot@0.1.0 all-dev
+> concurrently --kill-others "npm run dev" "npm run socket"
+
+[0] 
+[0] > rahoot@0.1.0 dev
+[0] > next dev
+[0] 
+[1] 
+[1] > rahoot@0.1.0 socket
+[1] > node ./socket/index.js
+[1] 
+[1] Server running on port 5505
+[0]   ▲ Next.js 14.2.30
+[0]   - Local:        http://localhost:3000
+[0]   - Environments: .env.local
+[0] 
+[0]  ✓ Starting...
+[0]  ✓ Ready in 1129ms
+[1] A user connected mMTCDd97xS2SgWVuAAAB
+[0]  ○ Compiling /manager ...
+[0] Browserslist: caniuse-lite is outdated. Please run:
+[0]   npx update-browserslist-db@latest
+[0]   Why you should do it regularly: https://github.com/browserslist/update-db#readme
+[0]  ✓ Compiled /manager in 1947ms (435 modules)
+[0]  ✓ Compiled in 192ms (435 modules)
+[0] Manager: Rendering with state.created = false state = {
+[0]   status: { name: 'SHOW_ROOM', data: { text: 'Waiting for the players' } },
+[0]   question: { current: 1, total: null },
+[0]   created: false
+[0] }
+[0]  GET /manager 200 in 2256ms
+[0]  ✓ Compiled /api/pusher in 90ms (181 modules)
+[0] Received request: { event: 'manager:createRoom', data: 'admin123' }
+[0] ✨ PUSHER API: Creating room with ID: 1GMDO6
+[0] ✨ PUSHER API: Room stored, total rooms now: 1
+[0] Sending manager:inviteCode to channel: room-1GMDO6-manager with roomId: 1GMDO6
+[0]  POST /api/pusher 200 in 2400ms
+[0]  ○ Compiling / ...
+[0]  ✓ Compiled / in 583ms (459 modules)
+[0]  GET / 200 in 646ms
+[0] Received request: { event: 'player:checkRoom', data: '1GMDO6' }
+[0] 🔍 PUSHER API: handleCheckRoom called with roomId: 1GMDO6
+[0] 🔍 PUSHER API: Available rooms: [ '1GMDO6' ]
+[0] 🔍 PUSHER API: Total rooms: 1
+[0] ✅ PUSHER API: Room found, sending game:successRoom event for roomId: 1GMDO6
+[0] 🚀 PUSHER API: Triggering game:successRoom on global channel...
+[0] ✅ PUSHER API: Global trigger result: Response {
+[0]   size: 0,
+[0]   timeout: 0,
+[0]   [Symbol(Body internals)]: {
+[0]     body: PassThrough {
+[0]       _readableState: [ReadableState],
+[0]       _events: [Object: null prototype],
+[0]       _eventsCount: 2,
+[0]       _maxListeners: undefined,
+[0]       _writableState: [WritableState],
+[0]       allowHalfOpen: true,
+[0]       [Symbol(kCapture)]: false,
+[0]       [Symbol(kCallback)]: null
+[0]     },
+[0]     disturbed: false,
+[0]     error: null
+[0]   },
+[0]   [Symbol(Response internals)]: {
+[0]     url: 'https://api-mt1.pusher.com/apps/2033830/events?auth_key=4749f069a99aaecef0a6&auth_timestamp=1754629161&auth_version=1.0&body_md5=06e4403095ae1b459edd7d1800e2e815&auth_signature=e64d9aeef70f1e45f478c61e985736058de561818e7728054eb8e9f7fab6bc52',
+[0]     status: 200,
+[0]     statusText: 'OK',
+[0]     headers: Headers { [Symbol(map)]: [Object: null prototype] },
+[0]     counter: 0
+[0]   }
+[0] }
+[0] 🚀 PUSHER API: Triggering game:successRoom on room-1GMDO6 channel...
+[0] ✅ PUSHER API: Room trigger result: Response {
+[0]   size: 0,
+[0]   timeout: 0,
+[0]   [Symbol(Body internals)]: {
+[0]     body: PassThrough {
+[0]       _readableState: [ReadableState],
+[0]       _events: [Object: null prototype],
+[0]       _eventsCount: 2,
+[0]       _maxListeners: undefined,
+[0]       _writableState: [WritableState],
+[0]       allowHalfOpen: true,
+[0]       [Symbol(kCapture)]: false,
+[0]       [Symbol(kCallback)]: null
+[0]     },
+[0]     disturbed: false,
+[0]     error: null
+[0]   },
+[0]   [Symbol(Response internals)]: {
+[0]     url: 'https://api-mt1.pusher.com/apps/2033830/events?auth_key=4749f069a99aaecef0a6&auth_timestamp=1754629161&auth_version=1.0&body_md5=5debea172f7116b3f00711b4202e2bda&auth_signature=d5f65a54e22e8cfa8b3a092a5a5216a84e20983cd0683f86d86c17e1b145454f',
+[0]     status: 200,
+[0]     statusText: 'OK',
+[0]     headers: Headers { [Symbol(map)]: [Object: null prototype] },
+[0]     counter: 0
+[0]   }
+[0] }
+[0]  POST /api/pusher 200 in 562ms
+[0] Received request: {
+[0]   event: 'player:join',
+[0]   data: { username: 'TestPlayer', room: '1GMDO6' }
+[0] }
+[0] 🎮 PUSHER API: handlePlayerJoin called with username: TestPlayer roomId: 1GMDO6
+[0] ✅ PUSHER API: Player joined successfully, sending game:successJoin event
+[0] 🔍 PUSHER API: Room after player join - Total players: 1
+[0] 🔍 PUSHER API: Room stored successfully, available rooms: [ '1GMDO6' ]
+[0]  POST /api/pusher 200 in 11ms
+[0]  ✓ Compiled /game in 258ms (463 modules)
+[0] ⚠️ PUSHER API: Failed to send events but player join was successful: Unexpected status code 400
+[0] Received request: { event: 'manager:startGame', data: { roomId: '1GMDO6' } }
+[0] 🎮 PUSHER API: handleStartGame called with roomId: 1GMDO6
+[0] 🔍 PUSHER API: Available rooms at start: [ '1GMDO6' ]
+[0] 🔍 PUSHER API: Total rooms: 1
+[0] ✅ PUSHER API: Room found for game start: 1GMDO6 Players: 1
+[0]  POST /api/pusher 200 in 342ms
+[0]  ✓ Compiled in 408ms (443 modules)
+[0]  ✓ Compiled in 178ms (272 modules)
+[0]  ✓ Compiled in 352ms (443 modules)
+[0]  ✓ Compiled in 145ms (272 modules)
+[0]  ✓ Compiled in 163ms (272 modules)
+[0]  ✓ Compiled in 129ms (272 modules)
+[0]  ✓ Compiled in 184ms (272 modules)
+[0]  ✓ Compiled in 208ms (272 modules)
+[0] Manager: Rendering with state.created = false state = {
+[0]   status: { name: 'SHOW_ROOM', data: { text: 'Waiting for the players' } },
+[0]   question: { current: 1, total: null },
+[0]   created: false
+[0] }
+[0]  GET /manager 200 in 68ms
+[0]  ✓ Compiled /api/pusher in 90ms (187 modules)
+[0] ✅ PUSHER API: Pusher initialized successfully with cluster: mt1
+[0] 📨 PUSHER API: Received request: { event: 'manager:createRoom', data: 'PASSWORD' }
+[0] ✨ PUSHER API: Creating room with ID: Z2ZGEH
+[0] ✨ PUSHER API: Room stored, total rooms now: 2
+[0] Sending manager:inviteCode to channel: room-Z2ZGEH-manager with roomId: Z2ZGEH
+[0]  POST /api/pusher 200 in 945ms
+[0]  ✓ Compiled / in 200ms (463 modules)
+[0]  GET / 200 in 231ms
+[0] ✅ PUSHER API: Pusher initialized successfully with cluster: mt1
+[0] 📨 PUSHER API: Received request: { event: 'player:checkRoom', data: 'Z2ZGEH' }
+[0] 🔍 PUSHER API: handleCheckRoom called with roomId: Z2ZGEH
+[0] 🔍 PUSHER API: Available rooms: [ '1GMDO6', 'Z2ZGEH' ]
+[0] 🔍 PUSHER API: Total rooms: 2
+[0] ✅ PUSHER API: Room found, sending game:successRoom event for roomId: Z2ZGEH
+[0] 🚀 PUSHER API: Triggering game:successRoom on global channel...
+[0] ✅ PUSHER API: Global trigger result: Response {
+[0]   size: 0,
+[0]   timeout: 0,
+[0]   [Symbol(Body internals)]: {
+[0]     body: PassThrough {
+[0]       _readableState: [ReadableState],
+[0]       _events: [Object: null prototype],
+[0]       _eventsCount: 2,
+[0]       _maxListeners: undefined,
+[0]       _writableState: [WritableState],
+[0]       allowHalfOpen: true,
+[0]       [Symbol(kCapture)]: false,
+[0]       [Symbol(kCallback)]: null
+[0]     },
+[0]     disturbed: false,
+[0]     error: null
+[0]   },
+[0]   [Symbol(Response internals)]: {
+[0]     url: 'https://api-mt1.pusher.com/apps/2033830/events?auth_key=4749f069a99aaecef0a6&auth_timestamp=1754629379&auth_version=1.0&body_md5=2bf895e9482f10348178547b6ea64408&auth_signature=557fabc3f6397fc89825134cd09fd3fab98add785bab9b7b42ee49b4dc10eb9d',
+[0]     status: 200,
+[0]     statusText: 'OK',
+[0]     headers: Headers { [Symbol(map)]: [Object: null prototype] },
+[0]     counter: 0
+[0]   }
+[0] }
+[0] 🚀 PUSHER API: Triggering game:successRoom on room-Z2ZGEH channel...
+[0] ✅ PUSHER API: Room trigger result: Response {
+[0]   size: 0,
+[0]   timeout: 0,
+[0]   [Symbol(Body internals)]: {
+[0]     body: PassThrough {
+[0]       _readableState: [ReadableState],
+[0]       _events: [Object: null prototype],
+[0]       _eventsCount: 2,
+[0]       _maxListeners: undefined,
+[0]       _writableState: [WritableState],
+[0]       allowHalfOpen: true,
+[0]       [Symbol(kCapture)]: false,
+[0]       [Symbol(kCallback)]: null
+[0]     },
+[0]     disturbed: false,
+[0]     error: null
+[0]   },
+[0]   [Symbol(Response internals)]: {
+[0]     url: 'https://api-mt1.pusher.com/apps/2033830/events?auth_key=4749f069a99aaecef0a6&auth_timestamp=1754629379&auth_version=1.0&body_md5=b593e61e3b56aaa2c548529115b2959f&auth_signature=4539dd0f6021d4a5ac56b63afddb334f7e64685af718b48faca0609e8d6fe828',
+[0]     status: 200,
+[0]     statusText: 'OK',
+[0]     headers: Headers { [Symbol(map)]: [Object: null prototype] },
+[0]     counter: 0
+[0]   }
+[0] }
+[0]  POST /api/pusher 200 in 708ms
+[0] 📨 PUSHER API: Received request: {
+[0]   event: 'player:join',
+[0]   data: { username: 'TestPlayer', room: 'Z2ZGEH' }
+[0] }
+[0] 🎮 PUSHER API: handlePlayerJoin called with username: TestPlayer roomId: Z2ZGEH
+[0] ✅ PUSHER API: Player joined successfully, sending game:successJoin event
+[0] 🔍 PUSHER API: Room after player join - Total players: 1
+[0] 🔍 PUSHER API: Room stored successfully, available rooms: [ '1GMDO6', 'Z2ZGEH' ]
+[0] 🚀 PUSHER API: Sending player join events...
+[0] 📡 PUSHER API: Sending game:successJoin to global channel
+[0]  POST /api/pusher 200 in 4ms
+[0] ✅ PUSHER API: Global event result: Response {
+[0]   size: 0,
+[0]   timeout: 0,
+[0]   [Symbol(Body internals)]: {
+[0]     body: PassThrough {
+[0]       _readableState: [ReadableState],
+[0]       _events: [Object: null prototype],
+[0]       _eventsCount: 2,
+[0]       _maxListeners: undefined,
+[0]       _writableState: [WritableState],
+[0]       allowHalfOpen: true,
+[0]       [Symbol(kCapture)]: false,
+[0]       [Symbol(kCallback)]: null
+[0]     },
+[0]     disturbed: false,
+[0]     error: null
+[0]   },
+[0]   [Symbol(Response internals)]: {
+[0]     url: 'https://api-mt1.pusher.com/apps/2033830/events?auth_key=4749f069a99aaecef0a6&auth_timestamp=1754629382&auth_version=1.0&body_md5=648c83ad413db15cccee432ec421b375&auth_signature=5afd4c040092744922c70778e9d63acd3267a2705b8762ee2fd235390fdc772a',
+[0]     status: 200,
+[0]     statusText: 'OK',
+[0]     headers: Headers { [Symbol(map)]: [Object: null prototype] },
+[0]     counter: 0
+[0]   }
+[0] }
+[0] 📡 PUSHER API: Sending player:joined to room channel: room-Z2ZGEH
+[0] ✅ PUSHER API: Room event result: Response {
+[0]   size: 0,
+[0]   timeout: 0,
+[0]   [Symbol(Body internals)]: {
+[0]     body: PassThrough {
+[0]       _readableState: [ReadableState],
+[0]       _events: [Object: null prototype],
+[0]       _eventsCount: 2,
+[0]       _maxListeners: undefined,
+[0]       _writableState: [WritableState],
+[0]       allowHalfOpen: true,
+[0]       [Symbol(kCapture)]: false,
+[0]       [Symbol(kCallback)]: null
+[0]     },
+[0]     disturbed: false,
+[0]     error: null
+[0]   },
+[0]   [Symbol(Response internals)]: {
+[0]     url: 'https://api-mt1.pusher.com/apps/2033830/events?auth_key=4749f069a99aaecef0a6&auth_timestamp=1754629382&auth_version=1.0&body_md5=fc0f7be90b1d11689550c4df8eabd3ea&auth_signature=85f750b18e5925dfa2413b800c3566fcf33d80684c7f5da15f9da267963072e9',
+[0]     status: 200,
+[0]     statusText: 'OK',
+[0]     headers: Headers { [Symbol(map)]: [Object: null prototype] },
+[0]     counter: 0
+[0]   }
+[0] }
+[0] 📡 PUSHER API: Sending manager:newPlayer to manager channel: room-Z2ZGEH-manager
+[0] 📡 PUSHER API: Manager event data: { id: 'mui9ckjj1', username: 'TestPlayer', room: 'Z2ZGEH', points: 0 }
+[0] ✅ PUSHER API: Manager event result: Response {
+[0]   size: 0,
+[0]   timeout: 0,
+[0]   [Symbol(Body internals)]: {
+[0]     body: PassThrough {
+[0]       _readableState: [ReadableState],
+[0]       _events: [Object: null prototype],
+[0]       _eventsCount: 2,
+[0]       _maxListeners: undefined,
+[0]       _writableState: [WritableState],
+[0]       allowHalfOpen: true,
+[0]       [Symbol(kCapture)]: false,
+[0]       [Symbol(kCallback)]: null
+[0]     },
+[0]     disturbed: false,
+[0]     error: null
+[0]   },
+[0]   [Symbol(Response internals)]: {
+[0]     url: 'https://api-mt1.pusher.com/apps/2033830/events?auth_key=4749f069a99aaecef0a6&auth_timestamp=1754629382&auth_version=1.0&body_md5=2d104a0584d20895e5fe6f1aca78dd66&auth_signature=2ba3185b1df81ef21e480a12e7aef2c138cb9158c6126df18675c7552c5ea153',
+[0]     status: 200,
+[0]     statusText: 'OK',
+[0]     headers: Headers { [Symbol(map)]: [Object: null prototype] },
+[0]     counter: 0
+[0]   }
+[0] }
+[0] ✅ PUSHER API: All events sent successfully
+[0] 📨 PUSHER API: Received request: { event: 'manager:startGame', data: { roomId: 'Z2ZGEH' } }
+[0] 🎮 PUSHER API: handleStartGame called with roomId: Z2ZGEH
+[0] 🔍 PUSHER API: Available rooms at start: [ '1GMDO6', 'Z2ZGEH' ]
+[0] 🔍 PUSHER API: Total rooms: 2
+[0] ✅ PUSHER API: Room found for game start: Z2ZGEH Players: 1
+[0]  POST /api/pusher 200 in 2365ms
+[0] Manager: Rendering with state.created = false state = {
+[0]   status: { name: 'SHOW_ROOM', data: { text: 'Waiting for the players' } },
+[0]   question: { current: 1, total: null },
+[0]   created: false
+[0] }
+[0]  GET /manager 200 in 28ms
+[0] 📨 PUSHER API: Received request: { event: 'manager:createRoom', data: 'admin123' }
+[0] ✨ PUSHER API: Creating room with ID: X9LP6M
+[0] ✨ PUSHER API: Room stored, total rooms now: 3
+[0] Sending manager:inviteCode to channel: room-X9LP6M-manager with roomId: X9LP6M
+[0]  POST /api/pusher 200 in 816ms
+[0]  GET / 200 in 9ms
+[0] 📨 PUSHER API: Received request: { event: 'player:checkRoom', data: 'X9LP6M' }
+[0] 🔍 PUSHER API: handleCheckRoom called with roomId: X9LP6M
+[0] 🔍 PUSHER API: Available rooms: [ '1GMDO6', 'Z2ZGEH', 'X9LP6M' ]
+[0] 🔍 PUSHER API: Total rooms: 3
+[0] ✅ PUSHER API: Room found, sending game:successRoom event for roomId: X9LP6M
+[0] 🚀 PUSHER API: Triggering game:successRoom on global channel...
+[0] ✅ PUSHER API: Global trigger result: Response {
+[0]   size: 0,
+[0]   timeout: 0,
+[0]   [Symbol(Body internals)]: {
+[0]     body: PassThrough {
+[0]       _readableState: [ReadableState],
+[0]       _events: [Object: null prototype],
+[0]       _eventsCount: 2,
+[0]       _maxListeners: undefined,
+[0]       _writableState: [WritableState],
+[0]       allowHalfOpen: true,
+[0]       [Symbol(kCapture)]: false,
+[0]       [Symbol(kCallback)]: null
+[0]     },
+[0]     disturbed: false,
+[0]     error: null
+[0]   },
+[0]   [Symbol(Response internals)]: {
+[0]     url: 'https://api-mt1.pusher.com/apps/2033830/events?auth_key=4749f069a99aaecef0a6&auth_timestamp=1754629445&auth_version=1.0&body_md5=484c1c6beac0c85cdd781a94df977451&auth_signature=bc8e175138adeb6c26825ee02d493906f596bc200d6c5026caddf2f213150709',
+[0]     status: 200,
+[0]     statusText: 'OK',
+[0]     headers: Headers { [Symbol(map)]: [Object: null prototype] },
+[0]     counter: 0
+[0]   }
+[0] }
+[0] 🚀 PUSHER API: Triggering game:successRoom on room-X9LP6M channel...
+[0] ✅ PUSHER API: Room trigger result: Response {
+[0]   size: 0,
+[0]   timeout: 0,
+[0]   [Symbol(Body internals)]: {
+[0]     body: PassThrough {
+[0]       _readableState: [ReadableState],
+[0]       _events: [Object: null prototype],
+[0]       _eventsCount: 2,
+[0]       _maxListeners: undefined,
+[0]       _writableState: [WritableState],
+[0]       allowHalfOpen: true,
+[0]       [Symbol(kCapture)]: false,
+[0]       [Symbol(kCallback)]: null
+[0]     },
+[0]     disturbed: false,
+[0]     error: null
+[0]   },
+[0]   [Symbol(Response internals)]: {
+[0]     url: 'https://api-mt1.pusher.com/apps/2033830/events?auth_key=4749f069a99aaecef0a6&auth_timestamp=1754629445&auth_version=1.0&body_md5=eb2bb2a96460a0e34dcedea5c45f4fe8&auth_signature=5eac2e68dc73d037668aee30aca340aa0c07308f98b6949984fb7748a732af60',
+[0]     status: 200,
+[0]     statusText: 'OK',
+[0]     headers: Headers { [Symbol(map)]: [Object: null prototype] },
+[0]     counter: 0
+[0]   }
+[0] }
+[0]  POST /api/pusher 200 in 612ms
+[0] 📨 PUSHER API: Received request: {
+[0]   event: 'player:join',
+[0]   data: { username: 'TestPlayer', room: 'X9LP6M' }
+[0] }
+[0] 🎮 PUSHER API: handlePlayerJoin called with username: TestPlayer roomId: X9LP6M
+[0] ✅ PUSHER API: Player joined successfully, sending game:successJoin event
+[0] 🔍 PUSHER API: Room after player join - Total players: 1
+[0] 🔍 PUSHER API: Room stored successfully, available rooms: [ '1GMDO6', 'Z2ZGEH', 'X9LP6M' ]
+[0] 🚀 PUSHER API: Sending player join events...
+[0] 📡 PUSHER API: Sending game:successJoin to global channel
+[0]  POST /api/pusher 200 in 4ms
+[0] ✅ PUSHER API: Global event result: Response {
+[0]   size: 0,
+[0]   timeout: 0,
+[0]   [Symbol(Body internals)]: {
+[0]     body: PassThrough {
+[0]       _readableState: [ReadableState],
+[0]       _events: [Object: null prototype],
+[0]       _eventsCount: 2,
+[0]       _maxListeners: undefined,
+[0]       _writableState: [WritableState],
+[0]       allowHalfOpen: true,
+[0]       [Symbol(kCapture)]: false,
+[0]       [Symbol(kCallback)]: null
+[0]     },
+[0]     disturbed: false,
+[0]     error: null
+[0]   },
+[0]   [Symbol(Response internals)]: {
+[0]     url: 'https://api-mt1.pusher.com/apps/2033830/events?auth_key=4749f069a99aaecef0a6&auth_timestamp=1754629448&auth_version=1.0&body_md5=648c83ad413db15cccee432ec421b375&auth_signature=7514680421b6a5f70150e792d26a21597b6c4be658723929f16c37b367b4315e',
+[0]     status: 200,
+[0]     statusText: 'OK',
+[0]     headers: Headers { [Symbol(map)]: [Object: null prototype] },
+[0]     counter: 0
+[0]   }
+[0] }
+[0] 📡 PUSHER API: Sending player:joined to room channel: room-X9LP6M
+[0] ✅ PUSHER API: Room event result: Response {
+[0]   size: 0,
+[0]   timeout: 0,
+[0]   [Symbol(Body internals)]: {
+[0]     body: PassThrough {
+[0]       _readableState: [ReadableState],
+[0]       _events: [Object: null prototype],
+[0]       _eventsCount: 2,
+[0]       _maxListeners: undefined,
+[0]       _writableState: [WritableState],
+[0]       allowHalfOpen: true,
+[0]       [Symbol(kCapture)]: false,
+[0]       [Symbol(kCallback)]: null
+[0]     },
+[0]     disturbed: false,
+[0]     error: null
+[0]   },
+[0]   [Symbol(Response internals)]: {
+[0]     url: 'https://api-mt1.pusher.com/apps/2033830/events?auth_key=4749f069a99aaecef0a6&auth_timestamp=1754629448&auth_version=1.0&body_md5=30cf29cabe48c2d4226b96ced1218c0f&auth_signature=6a47ac7ce41a8495bdc46ae81eb720aef3dde2249976dd17fa0aa71156f96806',
+[0]     status: 200,
+[0]     statusText: 'OK',
+[0]     headers: Headers { [Symbol(map)]: [Object: null prototype] },
+[0]     counter: 0
+[0]   }
+[0] }
+[0] 📡 PUSHER API: Sending manager:newPlayer to manager channel: room-X9LP6M-manager
+[0] 📡 PUSHER API: Manager event data: { id: 'gx86d8476', username: 'TestPlayer', room: 'X9LP6M', points: 0 }
+[0] ✅ PUSHER API: Manager event result: Response {
+[0]   size: 0,
+[0]   timeout: 0,
+[0]   [Symbol(Body internals)]: {
+[0]     body: PassThrough {
+[0]       _readableState: [ReadableState],
+[0]       _events: [Object: null prototype],
+[0]       _eventsCount: 2,
+[0]       _maxListeners: undefined,
+[0]       _writableState: [WritableState],
+[0]       allowHalfOpen: true,
+[0]       [Symbol(kCapture)]: false,
+[0]       [Symbol(kCallback)]: null
+[0]     },
+[0]     disturbed: false,
+[0]     error: null
+[0]   },
+[0]   [Symbol(Response internals)]: {
+[0]     url: 'https://api-mt1.pusher.com/apps/2033830/events?auth_key=4749f069a99aaecef0a6&auth_timestamp=1754629448&auth_version=1.0&body_md5=6d6bee01ad97e8e2b73dbbc585839973&auth_signature=99bc2bb56164f54fdba938e20d9e637a1705574c93c9e7aeba458ac697c69016',
+[0]     status: 200,
+[0]     statusText: 'OK',
+[0]     headers: Headers { [Symbol(map)]: [Object: null prototype] },
+[0]     counter: 0
+[0]   }
+[0] }
+[0] ✅ PUSHER API: All events sent successfully
+[0] 📨 PUSHER API: Received request: { event: 'manager:startGame', data: { roomId: 'X9LP6M' } }
+[0] 🎮 PUSHER API: handleStartGame called with roomId: X9LP6M
+[0] 🔍 PUSHER API: Available rooms at start: [ '1GMDO6', 'Z2ZGEH', 'X9LP6M' ]
+[0] 🔍 PUSHER API: Total rooms: 3
+[0] ✅ PUSHER API: Room found for game start: X9LP6M Players: 1
+[0]  POST /api/pusher 200 in 322ms
+[0] Manager: Rendering with state.created = false state = {
+[0]   status: { name: 'SHOW_ROOM', data: { text: 'Waiting for the players' } },
+[0]   question: { current: 1, total: null },
+[0]   created: false
+[0] }
+[0]  GET /manager 200 in 21ms
+[0] 📨 PUSHER API: Received request: { event: 'manager:createRoom', data: 'admin123' }
+[0] ✨ PUSHER API: Creating room with ID: NQDXJ1
+[0] ✨ PUSHER API: Room stored, total rooms now: 4
+[0] Sending manager:inviteCode to channel: room-NQDXJ1-manager with roomId: NQDXJ1
+[0]  POST /api/pusher 200 in 1916ms
+[0]  GET / 200 in 7ms
+[0] 📨 PUSHER API: Received request: { event: 'player:checkRoom', data: 'NQDXJ1' }
+[0] 🔍 PUSHER API: handleCheckRoom called with roomId: NQDXJ1
+[0] 🔍 PUSHER API: Available rooms: [ '1GMDO6', 'Z2ZGEH', 'X9LP6M', 'NQDXJ1' ]
+[0] 🔍 PUSHER API: Total rooms: 4
+[0] ✅ PUSHER API: Room found, sending game:successRoom event for roomId: NQDXJ1
+[0] 🚀 PUSHER API: Triggering game:successRoom on global channel...
+[0] ✅ PUSHER API: Global trigger result: Response {
+[0]   size: 0,
+[0]   timeout: 0,
+[0]   [Symbol(Body internals)]: {
+[0]     body: PassThrough {
+[0]       _readableState: [ReadableState],
+[0]       _events: [Object: null prototype],
+[0]       _eventsCount: 2,
+[0]       _maxListeners: undefined,
+[0]       _writableState: [WritableState],
+[0]       allowHalfOpen: true,
+[0]       [Symbol(kCapture)]: false,
+[0]       [Symbol(kCallback)]: null
+[0]     },
+[0]     disturbed: false,
+[0]     error: null
+[0]   },
+[0]   [Symbol(Response internals)]: {
+[0]     url: 'https://api-mt1.pusher.com/apps/2033830/events?auth_key=4749f069a99aaecef0a6&auth_timestamp=1754629817&auth_version=1.0&body_md5=3d8384c084851c93795198b420393dbf&auth_signature=03001f47be99a6fdee38cadd8b5edf08ad10c9f6c4e2be86e58eccf9bf030e6b',
+[0]     status: 200,
+[0]     statusText: 'OK',
+[0]     headers: Headers { [Symbol(map)]: [Object: null prototype] },
+[0]     counter: 0
+[0]   }
+[0] }
+[0] 🚀 PUSHER API: Triggering game:successRoom on room-NQDXJ1 channel...
+[0] ✅ PUSHER API: Room trigger result: Response {
+[0]   size: 0,
+[0]   timeout: 0,
+[0]   [Symbol(Body internals)]: {
+[0]     body: PassThrough {
+[0]       _readableState: [ReadableState],
+[0]       _events: [Object: null prototype],
+[0]       _eventsCount: 2,
+[0]       _maxListeners: undefined,
+[0]       _writableState: [WritableState],
+[0]       allowHalfOpen: true,
+[0]       [Symbol(kCapture)]: false,
+[0]       [Symbol(kCallback)]: null
+[0]     },
+[0]     disturbed: false,
+[0]     error: null
+[0]   },
+[0]   [Symbol(Response internals)]: {
+[0]     url: 'https://api-mt1.pusher.com/apps/2033830/events?auth_key=4749f069a99aaecef0a6&auth_timestamp=1754629817&auth_version=1.0&body_md5=fec59f0c3e131efd87109166a5632302&auth_signature=0f2249ba9c9feee3eae3a0aba866afce7d73b2cd062bb7f0bc50ad597d57dbfb',
+[0]     status: 200,
+[0]     statusText: 'OK',
+[0]     headers: Headers { [Symbol(map)]: [Object: null prototype] },
+[0]     counter: 0
+[0]   }
+[0] }
+[0]  POST /api/pusher 200 in 1245ms
+[0] 📨 PUSHER API: Received request: { event: 'player:join', data: { username: 'Player1', room: 'NQDXJ1' } }
+[0] 🎮 PUSHER API: handlePlayerJoin called with username: Player1 roomId: NQDXJ1
+[0] ✅ PUSHER API: Player joined successfully, sending game:successJoin event
+[0] 🔍 PUSHER API: Room after player join - Total players: 1
+[0] 🔍 PUSHER API: Room stored successfully, available rooms: [ '1GMDO6', 'Z2ZGEH', 'X9LP6M', 'NQDXJ1' ]
+[0] 🚀 PUSHER API: Sending player join events...
+[0] 📡 PUSHER API: Sending game:successJoin to global channel
+[0]  POST /api/pusher 200 in 4ms
+[0]  GET /?pin=NQDXJ1&name=QuickJoin1 200 in 17ms
+[0] ✅ PUSHER API: Global event result: Response {
+[0]   size: 0,
+[0]   timeout: 0,
+[0]   [Symbol(Body internals)]: {
+[0]     body: PassThrough {
+[0]       _readableState: [ReadableState],
+[0]       _events: [Object: null prototype],
+[0]       _eventsCount: 2,
+[0]       _maxListeners: undefined,
+[0]       _writableState: [WritableState],
+[0]       allowHalfOpen: true,
+[0]       [Symbol(kCapture)]: false,
+[0]       [Symbol(kCallback)]: null
+[0]     },
+[0]     disturbed: false,
+[0]     error: null
+[0]   },
+[0]   [Symbol(Response internals)]: {
+[0]     url: 'https://api-mt1.pusher.com/apps/2033830/events?auth_key=4749f069a99aaecef0a6&auth_timestamp=1754629819&auth_version=1.0&body_md5=648c83ad413db15cccee432ec421b375&auth_signature=b51262006f69d55ad42191cce298518d8da33fe2aedecd2e9a4dde5e41073396',
+[0]     status: 200,
+[0]     statusText: 'OK',
+[0]     headers: Headers { [Symbol(map)]: [Object: null prototype] },
+[0]     counter: 0
+[0]   }
+[0] }
+[0] 📡 PUSHER API: Sending player:joined to room channel: room-NQDXJ1
+[0]  GET /?pin=NQDXJ1&name=QuickJoin2 200 in 5ms
+[0] ✅ PUSHER API: Room event result: Response {
+[0]   size: 0,
+[0]   timeout: 0,
+[0]   [Symbol(Body internals)]: {
+[0]     body: PassThrough {
+[0]       _readableState: [ReadableState],
+[0]       _events: [Object: null prototype],
+[0]       _eventsCount: 2,
+[0]       _maxListeners: undefined,
+[0]       _writableState: [WritableState],
+[0]       allowHalfOpen: true,
+[0]       [Symbol(kCapture)]: false,
+[0]       [Symbol(kCallback)]: null
+[0]     },
+[0]     disturbed: false,
+[0]     error: null
+[0]   },
+[0]   [Symbol(Response internals)]: {
+[0]     url: 'https://api-mt1.pusher.com/apps/2033830/events?auth_key=4749f069a99aaecef0a6&auth_timestamp=1754629819&auth_version=1.0&body_md5=6beed3b7775991444b6174b4f6aae14a&auth_signature=f1fcb3f0337316cdf18a3d9cedf21f74c81b7d4674c33108859acfbed49670f9',
+[0]     status: 200,
+[0]     statusText: 'OK',
+[0]     headers: Headers { [Symbol(map)]: [Object: null prototype] },
+[0]     counter: 0
+[0]   }
+[0] }
+[0] 📡 PUSHER API: Sending manager:newPlayer to manager channel: room-NQDXJ1-manager
+[0] 📡 PUSHER API: Manager event data: { id: '6l5e1p498', username: 'Player1', room: 'NQDXJ1', points: 0 }
+[0] 📨 PUSHER API: Received request: { event: 'player:checkRoom', data: 'NQDXJ1' }
+[0] 🔍 PUSHER API: handleCheckRoom called with roomId: NQDXJ1
+[0] 🔍 PUSHER API: Available rooms: [ '1GMDO6', 'Z2ZGEH', 'X9LP6M', 'NQDXJ1' ]
+[0] 🔍 PUSHER API: Total rooms: 4
+[0] ✅ PUSHER API: Room found, sending game:successRoom event for roomId: NQDXJ1
+[0] 🚀 PUSHER API: Triggering game:successRoom on global channel...
+[0] ✅ PUSHER API: Manager event result: Response {
+[0]   size: 0,
+[0]   timeout: 0,
+[0]   [Symbol(Body internals)]: {
+[0]     body: PassThrough {
+[0]       _readableState: [ReadableState],
+[0]       _events: [Object: null prototype],
+[0]       _eventsCount: 2,
+[0]       _maxListeners: undefined,
+[0]       _writableState: [WritableState],
+[0]       allowHalfOpen: true,
+[0]       [Symbol(kCapture)]: false,
+[0]       [Symbol(kCallback)]: null
+[0]     },
+[0]     disturbed: false,
+[0]     error: null
+[0]   },
+[0]   [Symbol(Response internals)]: {
+[0]     url: 'https://api-mt1.pusher.com/apps/2033830/events?auth_key=4749f069a99aaecef0a6&auth_timestamp=1754629820&auth_version=1.0&body_md5=649da27449d3e820c0b096d6d5dbd5ce&auth_signature=176e5fd0db8d0f85d7ca205bf7d2208dd330dc89b2f0cfb48e1c79e1f6af7fd9',
+[0]     status: 200,
+[0]     statusText: 'OK',
+[0]     headers: Headers { [Symbol(map)]: [Object: null prototype] },
+[0]     counter: 0
+[0]   }
+[0] }
+[0] ✅ PUSHER API: All events sent successfully
+[0] 📨 PUSHER API: Received request: { event: 'player:checkRoom', data: 'NQDXJ1' }
+[0] 🔍 PUSHER API: handleCheckRoom called with roomId: NQDXJ1
+[0] 🔍 PUSHER API: Available rooms: [ '1GMDO6', 'Z2ZGEH', 'X9LP6M', 'NQDXJ1' ]
+[0] 🔍 PUSHER API: Total rooms: 4
+[0] ✅ PUSHER API: Room found, sending game:successRoom event for roomId: NQDXJ1
+[0] 🚀 PUSHER API: Triggering game:successRoom on global channel...
+[0] ✅ PUSHER API: Global trigger result: Response {
+[0]   size: 0,
+[0]   timeout: 0,
+[0]   [Symbol(Body internals)]: {
+[0]     body: PassThrough {
+[0]       _readableState: [ReadableState],
+[0]       _events: [Object: null prototype],
+[0]       _eventsCount: 2,
+[0]       _maxListeners: undefined,
+[0]       _writableState: [WritableState],
+[0]       allowHalfOpen: true,
+[0]       [Symbol(kCapture)]: false,
+[0]       [Symbol(kCallback)]: null
+[0]     },
+[0]     disturbed: false,
+[0]     error: null
+[0]   },
+[0]   [Symbol(Response internals)]: {
+[0]     url: 'https://api-mt1.pusher.com/apps/2033830/events?auth_key=4749f069a99aaecef0a6&auth_timestamp=1754629820&auth_version=1.0&body_md5=3d8384c084851c93795198b420393dbf&auth_signature=d6bbb75e0da5b23d936ce8abaa743d70b0fa4313037ccffc19402ed4143b3847',
+[0]     status: 200,
+[0]     statusText: 'OK',
+[0]     headers: Headers { [Symbol(map)]: [Object: null prototype] },
+[0]     counter: 0
+[0]   }
+[0] }
+[0] 🚀 PUSHER API: Triggering game:successRoom on room-NQDXJ1 channel...
+[0] ✅ PUSHER API: Room trigger result: Response {
+[0]   size: 0,
+[0]   timeout: 0,
+[0]   [Symbol(Body internals)]: {
+[0]     body: PassThrough {
+[0]       _readableState: [ReadableState],
+[0]       _events: [Object: null prototype],
+[0]       _eventsCount: 2,
+[0]       _maxListeners: undefined,
+[0]       _writableState: [WritableState],
+[0]       allowHalfOpen: true,
+[0]       [Symbol(kCapture)]: false,
+[0]       [Symbol(kCallback)]: null
+[0]     },
+[0]     disturbed: false,
+[0]     error: null
+[0]   },
+[0]   [Symbol(Response internals)]: {
+[0]     url: 'https://api-mt1.pusher.com/apps/2033830/events?auth_key=4749f069a99aaecef0a6&auth_timestamp=1754629821&auth_version=1.0&body_md5=fec59f0c3e131efd87109166a5632302&auth_signature=6c1a51118f9984afa3fe4fc35d4e7099bb34bf5261b06911febb582bc2f07f7b',
+[0]     status: 200,
+[0]     statusText: 'OK',
+[0]     headers: Headers { [Symbol(map)]: [Object: null prototype] },
+[0]     counter: 0
+[0]   }
+[0] }
+[0]  POST /api/pusher 200 in 543ms
+[0] ✅ PUSHER API: Global trigger result: Response {
+[0]   size: 0,
+[0]   timeout: 0,
+[0]   [Symbol(Body internals)]: {
+[0]     body: PassThrough {
+[0]       _readableState: [ReadableState],
+[0]       _events: [Object: null prototype],
+[0]       _eventsCount: 2,
+[0]       _maxListeners: undefined,
+[0]       _writableState: [WritableState],
+[0]       allowHalfOpen: true,
+[0]       [Symbol(kCapture)]: false,
+[0]       [Symbol(kCallback)]: null
+[0]     },
+[0]     disturbed: false,
+[0]     error: null
+[0]   },
+[0]   [Symbol(Response internals)]: {
+[0]     url: 'https://api-mt1.pusher.com/apps/2033830/events?auth_key=4749f069a99aaecef0a6&auth_timestamp=1754629820&auth_version=1.0&body_md5=3d8384c084851c93795198b420393dbf&auth_signature=d6bbb75e0da5b23d936ce8abaa743d70b0fa4313037ccffc19402ed4143b3847',
+[0]     status: 200,
+[0]     statusText: 'OK',
+[0]     headers: Headers { [Symbol(map)]: [Object: null prototype] },
+[0]     counter: 0
+[0]   }
+[0] }
+[0] 🚀 PUSHER API: Triggering game:successRoom on room-NQDXJ1 channel...
+[0] ✅ PUSHER API: Room trigger result: Response {
+[0]   size: 0,
+[0]   timeout: 0,
+[0]   [Symbol(Body internals)]: {
+[0]     body: PassThrough {
+[0]       _readableState: [ReadableState],
+[0]       _events: [Object: null prototype],
+[0]       _eventsCount: 2,
+[0]       _maxListeners: undefined,
+[0]       _writableState: [WritableState],
+[0]       allowHalfOpen: true,
+[0]       [Symbol(kCapture)]: false,
+[0]       [Symbol(kCallback)]: null
+[0]     },
+[0]     disturbed: false,
+[0]     error: null
+[0]   },
+[0]   [Symbol(Response internals)]: {
+[0]     url: 'https://api-mt1.pusher.com/apps/2033830/events?auth_key=4749f069a99aaecef0a6&auth_timestamp=1754629821&auth_version=1.0&body_md5=fec59f0c3e131efd87109166a5632302&auth_signature=6c1a51118f9984afa3fe4fc35d4e7099bb34bf5261b06911febb582bc2f07f7b',
+[0]     status: 200,
+[0]     statusText: 'OK',
+[0]     headers: Headers { [Symbol(map)]: [Object: null prototype] },
+[0]     counter: 0
+[0]   }
+[0] }
+[0]  POST /api/pusher 200 in 1435ms
+[0] 📨 PUSHER API: Received request: {
+[0]   event: 'player:join',
+[0]   data: { username: 'QuickJoin2', room: 'NQDXJ1' }
+[0] }
+[0] 🎮 PUSHER API: handlePlayerJoin called with username: QuickJoin2 roomId: NQDXJ1
+[0] ✅ PUSHER API: Player joined successfully, sending game:successJoin event
+[0] 🔍 PUSHER API: Room after player join - Total players: 2
+[0] 🔍 PUSHER API: Room stored successfully, available rooms: [ '1GMDO6', 'Z2ZGEH', 'X9LP6M', 'NQDXJ1' ]
+[0] 🚀 PUSHER API: Sending player join events...
+[0] 📡 PUSHER API: Sending game:successJoin to global channel
+[0] 📨 PUSHER API: Received request: {
+[0]   event: 'player:join',
+[0]   data: { username: 'QuickJoin2', room: 'NQDXJ1' }
+[0] }
+[0] 🎮 PUSHER API: handlePlayerJoin called with username: QuickJoin2 roomId: NQDXJ1
+[0] ❌ PUSHER API: Username already exists: QuickJoin2
+[0]  POST /api/pusher 200 in 3ms
+[0] ✅ PUSHER API: Global event result: Response {
+[0]   size: 0,
+[0]   timeout: 0,
+[0]   [Symbol(Body internals)]: {
+[0]     body: PassThrough {
+[0]       _readableState: [ReadableState],
+[0]       _events: [Object: null prototype],
+[0]       _eventsCount: 2,
+[0]       _maxListeners: undefined,
+[0]       _writableState: [WritableState],
+[0]       allowHalfOpen: true,
+[0]       [Symbol(kCapture)]: false,
+[0]       [Symbol(kCallback)]: null
+[0]     },
+[0]     disturbed: false,
+[0]     error: null
+[0]   },
+[0]   [Symbol(Response internals)]: {
+[0]     url: 'https://api-mt1.pusher.com/apps/2033830/events?auth_key=4749f069a99aaecef0a6&auth_timestamp=1754629821&auth_version=1.0&body_md5=648c83ad413db15cccee432ec421b375&auth_signature=9a372fb5e2f8946c307681ead68c07cac726b05c2fec0bf8d75896895374971f',
+[0]     status: 200,
+[0]     statusText: 'OK',
+[0]     headers: Headers { [Symbol(map)]: [Object: null prototype] },
+[0]     counter: 0
+[0]   }
+[0] }
+[0] 📡 PUSHER API: Sending player:joined to room channel: room-NQDXJ1
+[0]  POST /api/pusher 200 in 237ms
+[0] ✅ PUSHER API: Room event result: Response {
+[0]   size: 0,
+[0]   timeout: 0,
+[0]   [Symbol(Body internals)]: {
+[0]     body: PassThrough {
+[0]       _readableState: [ReadableState],
+[0]       _events: [Object: null prototype],
+[0]       _eventsCount: 2,
+[0]       _maxListeners: undefined,
+[0]       _writableState: [WritableState],
+[0]       allowHalfOpen: true,
+[0]       [Symbol(kCapture)]: false,
+[0]       [Symbol(kCallback)]: null
+[0]     },
+[0]     disturbed: false,
+[0]     error: null
+[0]   },
+[0]   [Symbol(Response internals)]: {
+[0]     url: 'https://api-mt1.pusher.com/apps/2033830/events?auth_key=4749f069a99aaecef0a6&auth_timestamp=1754629821&auth_version=1.0&body_md5=2b4994c8434edc1b4fb857406a28f9d1&auth_signature=fe4d5e693989bcc03c4737ef85eda3a2f3839335876608839d750c331288e4e6',
+[0]     status: 200,
+[0]     statusText: 'OK',
+[0]     headers: Headers { [Symbol(map)]: [Object: null prototype] },
+[0]     counter: 0
+[0]   }
+[0] }
+[0] 📡 PUSHER API: Sending manager:newPlayer to manager channel: room-NQDXJ1-manager
+[0] 📡 PUSHER API: Manager event data: { id: 'kd4a1duhk', username: 'QuickJoin2', room: 'NQDXJ1', points: 0 }
+[0] ✅ PUSHER API: Manager event result: Response {
+[0]   size: 0,
+[0]   timeout: 0,
+[0]   [Symbol(Body internals)]: {
+[0]     body: PassThrough {
+[0]       _readableState: [ReadableState],
+[0]       _events: [Object: null prototype],
+[0]       _eventsCount: 2,
+[0]       _maxListeners: undefined,
+[0]       _writableState: [WritableState],
+[0]       allowHalfOpen: true,
+[0]       [Symbol(kCapture)]: false,
+[0]       [Symbol(kCallback)]: null
+[0]     },
+[0]     disturbed: false,
+[0]     error: null
+[0]   },
+[0]   [Symbol(Response internals)]: {
+[0]     url: 'https://api-mt1.pusher.com/apps/2033830/events?auth_key=4749f069a99aaecef0a6&auth_timestamp=1754629822&auth_version=1.0&body_md5=cd229fea2489de07dc026712953f303b&auth_signature=90d23de280be8c9b71e6ead214301083d10682f28e367e1ab4ccf312b350692a',
+[0]     status: 200,
+[0]     statusText: 'OK',
+[0]     headers: Headers { [Symbol(map)]: [Object: null prototype] },
+[0]     counter: 0
+[0]   }
+[0] }
+[0] ✅ PUSHER API: All events sent successfully
+[0] 📨 PUSHER API: Received request: { event: 'manager:startGame', data: { roomId: 'NQDXJ1' } }
+[0] 🎮 PUSHER API: handleStartGame called with roomId: NQDXJ1
+[0] 🔍 PUSHER API: Available rooms at start: [ '1GMDO6', 'Z2ZGEH', 'X9LP6M', 'NQDXJ1' ]
+[0] 🔍 PUSHER API: Total rooms: 4
+[0] ✅ PUSHER API: Room found for game start: NQDXJ1 Players: 2
+[0]  POST /api/pusher 200 in 310ms
+[0] 📨 PUSHER API: Received request: { event: 'manager:startGame', data: { roomId: 'NQDXJ1' } }
+[0] 🎮 PUSHER API: handleStartGame called with roomId: NQDXJ1
+[0] 🔍 PUSHER API: Available rooms at start: [ '1GMDO6', 'Z2ZGEH', 'X9LP6M', 'NQDXJ1' ]
+[0] 🔍 PUSHER API: Total rooms: 4
+[0] ✅ PUSHER API: Room found for game start: NQDXJ1 Players: 2
+[0]  POST /api/pusher 200 in 241ms
+[0] 📨 PUSHER API: Received request: { event: 'manager:startGame', data: { roomId: 'NQDXJ1' } }
+[0] 🎮 PUSHER API: handleStartGame called with roomId: NQDXJ1
+[0] 🔍 PUSHER API: Available rooms at start: [ '1GMDO6', 'Z2ZGEH', 'X9LP6M', 'NQDXJ1' ]
+[0] 🔍 PUSHER API: Total rooms: 4
+[0] ✅ PUSHER API: Room found for game start: NQDXJ1 Players: 2
+[0]  POST /api/pusher 200 in 233ms
+[0] 📨 PUSHER API: Received request: { event: 'manager:startGame', data: { roomId: 'NQDXJ1' } }
+[0] 🎮 PUSHER API: handleStartGame called with roomId: NQDXJ1
+[0] 🔍 PUSHER API: Available rooms at start: [ '1GMDO6', 'Z2ZGEH', 'X9LP6M', 'NQDXJ1' ]
+[0] 🔍 PUSHER API: Total rooms: 4
+[0] ✅ PUSHER API: Room found for game start: NQDXJ1 Players: 2
+[0]  POST /api/pusher 200 in 248ms
+[0] Manager: Rendering with state.created = false state = {
+[0]   status: { name: 'SHOW_ROOM', data: { text: 'Waiting for the players' } },
+[0]   question: { current: 1, total: null },
+[0]   created: false
+[0] }
+[0]  GET /manager 200 in 14ms
+[0] 📨 PUSHER API: Received request: { event: 'manager:createRoom', data: 'admin123' }
+[0] ✨ PUSHER API: Creating room with ID: Y8UHY5
+[0] ✨ PUSHER API: Room stored, total rooms now: 5
+[0] Sending manager:inviteCode to channel: room-Y8UHY5-manager with roomId: Y8UHY5
+[0]  POST /api/pusher 200 in 808ms
+[0]  GET / 200 in 5ms
+[0] 📨 PUSHER API: Received request: { event: 'player:checkRoom', data: 'Y8UHY5' }
+[0] 🔍 PUSHER API: handleCheckRoom called with roomId: Y8UHY5
+[0] 🔍 PUSHER API: Available rooms: [ '1GMDO6', 'Z2ZGEH', 'X9LP6M', 'NQDXJ1', 'Y8UHY5' ]
+[0] 🔍 PUSHER API: Total rooms: 5
+[0] ✅ PUSHER API: Room found, sending game:successRoom event for roomId: Y8UHY5
+[0] 🚀 PUSHER API: Triggering game:successRoom on global channel...
+[0] ✅ PUSHER API: Global trigger result: Response {
+[0]   size: 0,
+[0]   timeout: 0,
+[0]   [Symbol(Body internals)]: {
+[0]     body: PassThrough {
+[0]       _readableState: [ReadableState],
+[0]       _events: [Object: null prototype],
+[0]       _eventsCount: 2,
+[0]       _maxListeners: undefined,
+[0]       _writableState: [WritableState],
+[0]       allowHalfOpen: true,
+[0]       [Symbol(kCapture)]: false,
+[0]       [Symbol(kCallback)]: null
+[0]     },
+[0]     disturbed: false,
+[0]     error: null
+[0]   },
+[0]   [Symbol(Response internals)]: {
+[0]     url: 'https://api-mt1.pusher.com/apps/2033830/events?auth_key=4749f069a99aaecef0a6&auth_timestamp=1754630037&auth_version=1.0&body_md5=6be0ba20ac6dc771e82f775751344afb&auth_signature=6aa6ac9cff46448d5236bdd38c38517f182e19f420ae9c32eb3d4bf690b632b0',
+[0]     status: 200,
+[0]     statusText: 'OK',
+[0]     headers: Headers { [Symbol(map)]: [Object: null prototype] },
+[0]     counter: 0
+[0]   }
+[0] }
+[0] 🚀 PUSHER API: Triggering game:successRoom on room-Y8UHY5 channel...
+[0] ✅ PUSHER API: Room trigger result: Response {
+[0]   size: 0,
+[0]   timeout: 0,
+[0]   [Symbol(Body internals)]: {
+[0]     body: PassThrough {
+[0]       _readableState: [ReadableState],
+[0]       _events: [Object: null prototype],
+[0]       _eventsCount: 2,
+[0]       _maxListeners: undefined,
+[0]       _writableState: [WritableState],
+[0]       allowHalfOpen: true,
+[0]       [Symbol(kCapture)]: false,
+[0]       [Symbol(kCallback)]: null
+[0]     },
+[0]     disturbed: false,
+[0]     error: null
+[0]   },
+[0]   [Symbol(Response internals)]: {
+[0]     url: 'https://api-mt1.pusher.com/apps/2033830/events?auth_key=4749f069a99aaecef0a6&auth_timestamp=1754630037&auth_version=1.0&body_md5=55dd2fe93fb5f3fec7adec3596ccee5a&auth_signature=89b8dafe144d8901f3040c9ba90da05ca459fd49f467b3f66f60ad65910b2397',
+[0]     status: 200,
+[0]     statusText: 'OK',
+[0]     headers: Headers { [Symbol(map)]: [Object: null prototype] },
+[0]     counter: 0
+[0]   }
+[0] }
+[0]  POST /api/pusher 200 in 554ms
+[0] 📨 PUSHER API: Received request: { event: 'player:join', data: { username: 'Player1', room: 'Y8UHY5' } }
+[0] 🎮 PUSHER API: handlePlayerJoin called with username: Player1 roomId: Y8UHY5
+[0] ✅ PUSHER API: Player joined successfully, sending game:successJoin event
+[0] 🔍 PUSHER API: Room after player join - Total players: 1
+[0] 🔍 PUSHER API: Room stored successfully, available rooms: [ '1GMDO6', 'Z2ZGEH', 'X9LP6M', 'NQDXJ1', 'Y8UHY5' ]
+[0] 🚀 PUSHER API: Sending player join events...
+[0] 📡 PUSHER API: Sending game:successJoin to global channel
+[0]  POST /api/pusher 200 in 2ms
+[0]  GET /?pin=Y8UHY5&name=QuickJoin1 200 in 5ms
+[0]  GET /?pin=Y8UHY5&name=QuickJoin2 200 in 4ms
+[0] ✅ PUSHER API: Global event result: Response {
+[0]   size: 0,
+[0]   timeout: 0,
+[0]   [Symbol(Body internals)]: {
+[0]     body: PassThrough {
+[0]       _readableState: [ReadableState],
+[0]       _events: [Object: null prototype],
+[0]       _eventsCount: 2,
+[0]       _maxListeners: undefined,
+[0]       _writableState: [WritableState],
+[0]       allowHalfOpen: true,
+[0]       [Symbol(kCapture)]: false,
+[0]       [Symbol(kCallback)]: null
+[0]     },
+[0]     disturbed: false,
+[0]     error: null
+[0]   },
+[0]   [Symbol(Response internals)]: {
+[0]     url: 'https://api-mt1.pusher.com/apps/2033830/events?auth_key=4749f069a99aaecef0a6&auth_timestamp=1754630039&auth_version=1.0&body_md5=648c83ad413db15cccee432ec421b375&auth_signature=e645f5be2d0f3df443077ee03fde57f1c14c1c8ca30ca1392a6f5b364bdf946d',
+[0]     status: 200,
+[0]     statusText: 'OK',
+[0]     headers: Headers { [Symbol(map)]: [Object: null prototype] },
+[0]     counter: 0
+[0]   }
+[0] }
+[0] 📡 PUSHER API: Sending player:joined to room channel: room-Y8UHY5
+[0] 📨 PUSHER API: Received request: { event: 'player:checkRoom', data: 'Y8UHY5' }
+[0] 🔍 PUSHER API: handleCheckRoom called with roomId: Y8UHY5
+[0] 🔍 PUSHER API: Available rooms: [ '1GMDO6', 'Z2ZGEH', 'X9LP6M', 'NQDXJ1', 'Y8UHY5' ]
+[0] 🔍 PUSHER API: Total rooms: 5
+[0] ✅ PUSHER API: Room found, sending game:successRoom event for roomId: Y8UHY5
+[0] 🚀 PUSHER API: Triggering game:successRoom on global channel...
+[0] ✅ PUSHER API: Room event result: Response {
+[0]   size: 0,
+[0]   timeout: 0,
+[0]   [Symbol(Body internals)]: {
+[0]     body: PassThrough {
+[0]       _readableState: [ReadableState],
+[0]       _events: [Object: null prototype],
+[0]       _eventsCount: 2,
+[0]       _maxListeners: undefined,
+[0]       _writableState: [WritableState],
+[0]       allowHalfOpen: true,
+[0]       [Symbol(kCapture)]: false,
+[0]       [Symbol(kCallback)]: null
+[0]     },
+[0]     disturbed: false,
+[0]     error: null
+[0]   },
+[0]   [Symbol(Response internals)]: {
+[0]     url: 'https://api-mt1.pusher.com/apps/2033830/events?auth_key=4749f069a99aaecef0a6&auth_timestamp=1754630039&auth_version=1.0&body_md5=f85842ba2e77ca8bfc749e832036235e&auth_signature=c590358fe7056a585351d0cef0e13716bf2a131a609d6054276a60ea9e831bbe',
+[0]     status: 200,
+[0]     statusText: 'OK',
+[0]     headers: Headers { [Symbol(map)]: [Object: null prototype] },
+[0]     counter: 0
+[0]   }
+[0] }
+[0] 📡 PUSHER API: Sending manager:newPlayer to manager channel: room-Y8UHY5-manager
+[0] 📡 PUSHER API: Manager event data: { id: 'c2itzwn2j', username: 'Player1', room: 'Y8UHY5', points: 0 }
+[0] ✅ PUSHER API: Global trigger result: Response {
+[0]   size: 0,
+[0]   timeout: 0,
+[0]   [Symbol(Body internals)]: {
+[0]     body: PassThrough {
+[0]       _readableState: [ReadableState],
+[0]       _events: [Object: null prototype],
+[0]       _eventsCount: 2,
+[0]       _maxListeners: undefined,
+[0]       _writableState: [WritableState],
+[0]       allowHalfOpen: true,
+[0]       [Symbol(kCapture)]: false,
+[0]       [Symbol(kCallback)]: null
+[0]     },
+[0]     disturbed: false,
+[0]     error: null
+[0]   },
+[0]   [Symbol(Response internals)]: {
+[0]     url: 'https://api-mt1.pusher.com/apps/2033830/events?auth_key=4749f069a99aaecef0a6&auth_timestamp=1754630039&auth_version=1.0&body_md5=6be0ba20ac6dc771e82f775751344afb&auth_signature=bf2098825ae36fa37397bc770c3739f1fb04d8c19362fd2471f9457cc6ef8213',
+[0]     status: 200,
+[0]     statusText: 'OK',
+[0]     headers: Headers { [Symbol(map)]: [Object: null prototype] },
+[0]     counter: 0
+[0]   }
+[0] }
+[0] 🚀 PUSHER API: Triggering game:successRoom on room-Y8UHY5 channel...
+[0] ✅ PUSHER API: Manager event result: Response {
+[0]   size: 0,
+[0]   timeout: 0,
+[0]   [Symbol(Body internals)]: {
+[0]     body: PassThrough {
+[0]       _readableState: [ReadableState],
+[0]       _events: [Object: null prototype],
+[0]       _eventsCount: 2,
+[0]       _maxListeners: undefined,
+[0]       _writableState: [WritableState],
+[0]       allowHalfOpen: true,
+[0]       [Symbol(kCapture)]: false,
+[0]       [Symbol(kCallback)]: null
+[0]     },
+[0]     disturbed: false,
+[0]     error: null
+[0]   },
+[0]   [Symbol(Response internals)]: {
+[0]     url: 'https://api-mt1.pusher.com/apps/2033830/events?auth_key=4749f069a99aaecef0a6&auth_timestamp=1754630039&auth_version=1.0&body_md5=9070e781b7259cf9eabb33770ec0a864&auth_signature=6fcfa5bbe4f16bdc57d0ba043fd096bbf0da776f581efdd0f8a23eeff929be1b',
+[0]     status: 200,
+[0]     statusText: 'OK',
+[0]     headers: Headers { [Symbol(map)]: [Object: null prototype] },
+[0]     counter: 0
+[0]   }
+[0] }
+[0] ✅ PUSHER API: All events sent successfully
+[0] ✅ PUSHER API: Room trigger result: Response {
+[0]   size: 0,
+[0]   timeout: 0,
+[0]   [Symbol(Body internals)]: {
+[0]     body: PassThrough {
+[0]       _readableState: [ReadableState],
+[0]       _events: [Object: null prototype],
+[0]       _eventsCount: 2,
+[0]       _maxListeners: undefined,
+[0]       _writableState: [WritableState],
+[0]       allowHalfOpen: true,
+[0]       [Symbol(kCapture)]: false,
+[0]       [Symbol(kCallback)]: null
+[0]     },
+[0]     disturbed: false,
+[0]     error: null
+[0]   },
+[0]   [Symbol(Response internals)]: {
+[0]     url: 'https://api-mt1.pusher.com/apps/2033830/events?auth_key=4749f069a99aaecef0a6&auth_timestamp=1754630039&auth_version=1.0&body_md5=55dd2fe93fb5f3fec7adec3596ccee5a&auth_signature=067e0db9e507675bdd48330a561582c4e058dfb9114eb4f58d316fed4f47f6c9',
+[0]     status: 200,
+[0]     statusText: 'OK',
+[0]     headers: Headers { [Symbol(map)]: [Object: null prototype] },
+[0]     counter: 0
+[0]   }
+[0] }
+[0]  POST /api/pusher 200 in 471ms
+[0] 📨 PUSHER API: Received request: { event: 'player:checkRoom', data: 'Y8UHY5' }
+[0] 🔍 PUSHER API: handleCheckRoom called with roomId: Y8UHY5
+[0] 🔍 PUSHER API: Available rooms: [ '1GMDO6', 'Z2ZGEH', 'X9LP6M', 'NQDXJ1', 'Y8UHY5' ]
+[0] 🔍 PUSHER API: Total rooms: 5
+[0] ✅ PUSHER API: Room found, sending game:successRoom event for roomId: Y8UHY5
+[0] 🚀 PUSHER API: Triggering game:successRoom on global channel...
+[0] ✅ PUSHER API: Global trigger result: Response {
+[0]   size: 0,
+[0]   timeout: 0,
+[0]   [Symbol(Body internals)]: {
+[0]     body: PassThrough {
+[0]       _readableState: [ReadableState],
+[0]       _events: [Object: null prototype],
+[0]       _eventsCount: 2,
+[0]       _maxListeners: undefined,
+[0]       _writableState: [WritableState],
+[0]       allowHalfOpen: true,
+[0]       [Symbol(kCapture)]: false,
+[0]       [Symbol(kCallback)]: null
+[0]     },
+[0]     disturbed: false,
+[0]     error: null
+[0]   },
+[0]   [Symbol(Response internals)]: {
+[0]     url: 'https://api-mt1.pusher.com/apps/2033830/events?auth_key=4749f069a99aaecef0a6&auth_timestamp=1754630040&auth_version=1.0&body_md5=6be0ba20ac6dc771e82f775751344afb&auth_signature=e8dc105490143048185591cacf6bcff8322c484e4236096746c447ea46ed0146',
+[0]     status: 200,
+[0]     statusText: 'OK',
+[0]     headers: Headers { [Symbol(map)]: [Object: null prototype] },
+[0]     counter: 0
+[0]   }
+[0] }
+[0] 🚀 PUSHER API: Triggering game:successRoom on room-Y8UHY5 channel...
+[0] ✅ PUSHER API: Room trigger result: Response {
+[0]   size: 0,
+[0]   timeout: 0,
+[0]   [Symbol(Body internals)]: {
+[0]     body: PassThrough {
+[0]       _readableState: [ReadableState],
+[0]       _events: [Object: null prototype],
+[0]       _eventsCount: 2,
+[0]       _maxListeners: undefined,
+[0]       _writableState: [WritableState],
+[0]       allowHalfOpen: true,
+[0]       [Symbol(kCapture)]: false,
+[0]       [Symbol(kCallback)]: null
+[0]     },
+[0]     disturbed: false,
+[0]     error: null
+[0]   },
+[0]   [Symbol(Response internals)]: {
+[0]     url: 'https://api-mt1.pusher.com/apps/2033830/events?auth_key=4749f069a99aaecef0a6&auth_timestamp=1754630041&auth_version=1.0&body_md5=55dd2fe93fb5f3fec7adec3596ccee5a&auth_signature=2064833e39e82690254f5d22463654d3cbfc272c60f8b9605104e93ebd555819',
+[0]     status: 200,
+[0]     statusText: 'OK',
+[0]     headers: Headers { [Symbol(map)]: [Object: null prototype] },
+[0]     counter: 0
+[0]   }
+[0] }
+[0]  POST /api/pusher 200 in 534ms
+[0] 📨 PUSHER API: Received request: {
+[0]   event: 'player:join',
+[0]   data: { username: 'QuickJoin1', room: 'Y8UHY5' }
+[0] }
+[0] 🎮 PUSHER API: handlePlayerJoin called with username: QuickJoin1 roomId: Y8UHY5
+[0] ✅ PUSHER API: Player joined successfully, sending game:successJoin event
+[0] 🔍 PUSHER API: Room after player join - Total players: 2
+[0] 🔍 PUSHER API: Room stored successfully, available rooms: [ '1GMDO6', 'Z2ZGEH', 'X9LP6M', 'NQDXJ1', 'Y8UHY5' ]
+[0] 🚀 PUSHER API: Sending player join events...
+[0] 📡 PUSHER API: Sending game:successJoin to global channel
+[0] 📨 PUSHER API: Received request: {
+[0]   event: 'player:join',
+[0]   data: { username: 'QuickJoin1', room: 'Y8UHY5' }
+[0] }
+[0] 🎮 PUSHER API: handlePlayerJoin called with username: QuickJoin1 roomId: Y8UHY5
+[0] ❌ PUSHER API: Username already exists: QuickJoin1
+[0]  POST /api/pusher 200 in 2ms
+[0] ✅ PUSHER API: Global event result: Response {
+[0]   size: 0,
+[0]   timeout: 0,
+[0]   [Symbol(Body internals)]: {
+[0]     body: PassThrough {
+[0]       _readableState: [ReadableState],
+[0]       _events: [Object: null prototype],
+[0]       _eventsCount: 2,
+[0]       _maxListeners: undefined,
+[0]       _writableState: [WritableState],
+[0]       allowHalfOpen: true,
+[0]       [Symbol(kCapture)]: false,
+[0]       [Symbol(kCallback)]: null
+[0]     },
+[0]     disturbed: false,
+[0]     error: null
+[0]   },
+[0]   [Symbol(Response internals)]: {
+[0]     url: 'https://api-mt1.pusher.com/apps/2033830/events?auth_key=4749f069a99aaecef0a6&auth_timestamp=1754630041&auth_version=1.0&body_md5=648c83ad413db15cccee432ec421b375&auth_signature=0cef1a5ef4284d22ff73eb0d97c906ba1808791c919e35504f95d68132f4f878',
+[0]     status: 200,
+[0]     statusText: 'OK',
+[0]     headers: Headers { [Symbol(map)]: [Object: null prototype] },
+[0]     counter: 0
+[0]   }
+[0] }
+[0] 📡 PUSHER API: Sending player:joined to room channel: room-Y8UHY5
+[0]  POST /api/pusher 200 in 237ms
+[0] ✅ PUSHER API: Room event result: Response {
+[0]   size: 0,
+[0]   timeout: 0,
+[0]   [Symbol(Body internals)]: {
+[0]     body: PassThrough {
+[0]       _readableState: [ReadableState],
+[0]       _events: [Object: null prototype],
+[0]       _eventsCount: 2,
+[0]       _maxListeners: undefined,
+[0]       _writableState: [WritableState],
+[0]       allowHalfOpen: true,
+[0]       [Symbol(kCapture)]: false,
+[0]       [Symbol(kCallback)]: null
+[0]     },
+[0]     disturbed: false,
+[0]     error: null
+[0]   },
+[0]   [Symbol(Response internals)]: {
+[0]     url: 'https://api-mt1.pusher.com/apps/2033830/events?auth_key=4749f069a99aaecef0a6&auth_timestamp=1754630041&auth_version=1.0&body_md5=1a7aaa919cc8882e58757e4edc94f96d&auth_signature=cccfc8296f500c1115d52a7deae3d7fdd9084d9939264a77b7f97ca1a446eab1',
+[0]     status: 200,
+[0]     statusText: 'OK',
+[0]     headers: Headers { [Symbol(map)]: [Object: null prototype] },
+[0]     counter: 0
+[0]   }
+[0] }
+[0] 📡 PUSHER API: Sending manager:newPlayer to manager channel: room-Y8UHY5-manager
+[0] 📡 PUSHER API: Manager event data: { id: 'c9jmt3726', username: 'QuickJoin1', room: 'Y8UHY5', points: 0 }
+[0] ✅ PUSHER API: Manager event result: Response {
+[0]   size: 0,
+[0]   timeout: 0,
+[0]   [Symbol(Body internals)]: {
+[0]     body: PassThrough {
+[0]       _readableState: [ReadableState],
+[0]       _events: [Object: null prototype],
+[0]       _eventsCount: 2,
+[0]       _maxListeners: undefined,
+[0]       _writableState: [WritableState],
+[0]       allowHalfOpen: true,
+[0]       [Symbol(kCapture)]: false,
+[0]       [Symbol(kCallback)]: null
+[0]     },
+[0]     disturbed: false,
+[0]     error: null
+[0]   },
+[0]   [Symbol(Response internals)]: {
+[0]     url: 'https://api-mt1.pusher.com/apps/2033830/events?auth_key=4749f069a99aaecef0a6&auth_timestamp=1754630041&auth_version=1.0&body_md5=2e3c92eb2f63ad0b30106541699089ed&auth_signature=c5e7fa245710d370e9af0015577076bd5169ecf8fd7160e9e08757373a1f90d6',
+[0]     status: 200,
+[0]     statusText: 'OK',
+[0]     headers: Headers { [Symbol(map)]: [Object: null prototype] },
+[0]     counter: 0
+[0]   }
+[0] }
+[0] ✅ PUSHER API: All events sent successfully
+[0] 📨 PUSHER API: Received request: { event: 'manager:startGame', data: { roomId: 'Y8UHY5' } }
+[0] 🎮 PUSHER API: handleStartGame called with roomId: Y8UHY5
+[0] 🔍 PUSHER API: Available rooms at start: [ '1GMDO6', 'Z2ZGEH', 'X9LP6M', 'NQDXJ1', 'Y8UHY5' ]
+[0] 🔍 PUSHER API: Total rooms: 5
+[0] ✅ PUSHER API: Room found for game start: Y8UHY5 Players: 2
+[0]  POST /api/pusher 200 in 313ms
+[0] 📨 PUSHER API: Received request: { event: 'manager:startGame', data: { roomId: 'Y8UHY5' } }
+[0] 🎮 PUSHER API: handleStartGame called with roomId: Y8UHY5
+[0] 🔍 PUSHER API: Available rooms at start: [ '1GMDO6', 'Z2ZGEH', 'X9LP6M', 'NQDXJ1', 'Y8UHY5' ]
+[0] 🔍 PUSHER API: Total rooms: 5
+[0] ✅ PUSHER API: Room found for game start: Y8UHY5 Players: 2
+[0]  POST /api/pusher 200 in 320ms
+[0] 📨 PUSHER API: Received request: { event: 'manager:startGame', data: { roomId: 'Y8UHY5' } }
+[0] 🎮 PUSHER API: handleStartGame called with roomId: Y8UHY5
+[0] 🔍 PUSHER API: Available rooms at start: [ '1GMDO6', 'Z2ZGEH', 'X9LP6M', 'NQDXJ1', 'Y8UHY5' ]
+[0] 🔍 PUSHER API: Total rooms: 5
+[0] ✅ PUSHER API: Room found for game start: Y8UHY5 Players: 2
+[0]  POST /api/pusher 200 in 243ms
+[0] 📨 PUSHER API: Received request: { event: 'manager:startGame', data: { roomId: 'Y8UHY5' } }
+[0] 🎮 PUSHER API: handleStartGame called with roomId: Y8UHY5
+[0] 🔍 PUSHER API: Available rooms at start: [ '1GMDO6', 'Z2ZGEH', 'X9LP6M', 'NQDXJ1', 'Y8UHY5' ]
+[0] 🔍 PUSHER API: Total rooms: 5
+[0] ✅ PUSHER API: Room found for game start: Y8UHY5 Players: 2
+[0]  POST /api/pusher 200 in 332ms
+[0] Manager: Rendering with state.created = false state = {
+[0]   status: { name: 'SHOW_ROOM', data: { text: 'Waiting for the players' } },
+[0]   question: { current: 1, total: null },
+[0]   created: false
+[0] }
+[0]  GET /manager 200 in 16ms
+[0] 📨 PUSHER API: Received request: { event: 'manager:createRoom', data: 'admin123' }
+[0] ✨ PUSHER API: Creating room with ID: 32ZFG2
+[0] ✨ PUSHER API: Room stored, total rooms now: 6
+[0] Sending manager:inviteCode to channel: room-32ZFG2-manager with roomId: 32ZFG2
+[0]  POST /api/pusher 200 in 829ms
+[0]  GET / 200 in 7ms
+[0] 📨 PUSHER API: Received request: { event: 'player:checkRoom', data: '32ZFG2' }
+[0] 🔍 PUSHER API: handleCheckRoom called with roomId: 32ZFG2
+[0] 🔍 PUSHER API: Available rooms: [ '1GMDO6', 'Z2ZGEH', 'X9LP6M', 'NQDXJ1', 'Y8UHY5', '32ZFG2' ]
+[0] 🔍 PUSHER API: Total rooms: 6
+[0] ✅ PUSHER API: Room found, sending game:successRoom event for roomId: 32ZFG2
+[0] 🚀 PUSHER API: Triggering game:successRoom on global channel...
+[0] ✅ PUSHER API: Global trigger result: Response {
+[0]   size: 0,
+[0]   timeout: 0,
+[0]   [Symbol(Body internals)]: {
+[0]     body: PassThrough {
+[0]       _readableState: [ReadableState],
+[0]       _events: [Object: null prototype],
+[0]       _eventsCount: 2,
+[0]       _maxListeners: undefined,
+[0]       _writableState: [WritableState],
+[0]       allowHalfOpen: true,
+[0]       [Symbol(kCapture)]: false,
+[0]       [Symbol(kCallback)]: null
+[0]     },
+[0]     disturbed: false,
+[0]     error: null
+[0]   },
+[0]   [Symbol(Response internals)]: {
+[0]     url: 'https://api-mt1.pusher.com/apps/2033830/events?auth_key=4749f069a99aaecef0a6&auth_timestamp=1754630305&auth_version=1.0&body_md5=32f9662dd7c8d5eb7d80f4ad97210ce0&auth_signature=f3cc1604ccdb67e68b4fb740e4d73105a50129cd9e42938c3863519ef7c82c27',
+[0]     status: 200,
+[0]     statusText: 'OK',
+[0]     headers: Headers { [Symbol(map)]: [Object: null prototype] },
+[0]     counter: 0
+[0]   }
+[0] }
+[0] 🚀 PUSHER API: Triggering game:successRoom on room-32ZFG2 channel...
+[0] ✅ PUSHER API: Room trigger result: Response {
+[0]   size: 0,
+[0]   timeout: 0,
+[0]   [Symbol(Body internals)]: {
+[0]     body: PassThrough {
+[0]       _readableState: [ReadableState],
+[0]       _events: [Object: null prototype],
+[0]       _eventsCount: 2,
+[0]       _maxListeners: undefined,
+[0]       _writableState: [WritableState],
+[0]       allowHalfOpen: true,
+[0]       [Symbol(kCapture)]: false,
+[0]       [Symbol(kCallback)]: null
+[0]     },
+[0]     disturbed: false,
+[0]     error: null
+[0]   },
+[0]   [Symbol(Response internals)]: {
+[0]     url: 'https://api-mt1.pusher.com/apps/2033830/events?auth_key=4749f069a99aaecef0a6&auth_timestamp=1754630305&auth_version=1.0&body_md5=bdbe64583d2f2e154f1cd35df9e88e64&auth_signature=c2ac94f3874fda2bc103ccadde13d6ce04fa6af727aa9cac207a24623efc2d68',
+[0]     status: 200,
+[0]     statusText: 'OK',
+[0]     headers: Headers { [Symbol(map)]: [Object: null prototype] },
+[0]     counter: 0
+[0]   }
+[0] }
+[0]  POST /api/pusher 200 in 580ms
+[0] 📨 PUSHER API: Received request: { event: 'player:join', data: { username: 'Player1', room: '32ZFG2' } }
+[0] 🎮 PUSHER API: handlePlayerJoin called with username: Player1 roomId: 32ZFG2
+[0] ✅ PUSHER API: Player joined successfully, sending game:successJoin event
+[0] 🔍 PUSHER API: Room after player join - Total players: 1
+[0] 🔍 PUSHER API: Room stored successfully, available rooms: [ '1GMDO6', 'Z2ZGEH', 'X9LP6M', 'NQDXJ1', 'Y8UHY5', '32ZFG2' ]
+[0] 🚀 PUSHER API: Sending player join events...
+[0] 📡 PUSHER API: Sending game:successJoin to global channel
+[0]  POST /api/pusher 200 in 3ms
+[0]  GET /?pin=32ZFG2&name=QuickJoin2 200 in 6ms
+[0] ✅ PUSHER API: Global event result: Response {
+[0]   size: 0,
+[0]   timeout: 0,
+[0]   [Symbol(Body internals)]: {
+[0]     body: PassThrough {
+[0]       _readableState: [ReadableState],
+[0]       _events: [Object: null prototype],
+[0]       _eventsCount: 2,
+[0]       _maxListeners: undefined,
+[0]       _writableState: [WritableState],
+[0]       allowHalfOpen: true,
+[0]       [Symbol(kCapture)]: false,
+[0]       [Symbol(kCallback)]: null
+[0]     },
+[0]     disturbed: false,
+[0]     error: null
+[0]   },
+[0]   [Symbol(Response internals)]: {
+[0]     url: 'https://api-mt1.pusher.com/apps/2033830/events?auth_key=4749f069a99aaecef0a6&auth_timestamp=1754630307&auth_version=1.0&body_md5=648c83ad413db15cccee432ec421b375&auth_signature=fee9faffa1c2c1d308043c3be0c44397a43b05e5f05cded6f6327b1c4c501baf',
+[0]     status: 200,
+[0]     statusText: 'OK',
+[0]     headers: Headers { [Symbol(map)]: [Object: null prototype] },
+[0]     counter: 0
+[0]   }
+[0] }
+[0] 📡 PUSHER API: Sending player:joined to room channel: room-32ZFG2
+[0] ✅ PUSHER API: Room event result: Response {
+[0]   size: 0,
+[0]   timeout: 0,
+[0]   [Symbol(Body internals)]: {
+[0]     body: PassThrough {
+[0]       _readableState: [ReadableState],
+[0]       _events: [Object: null prototype],
+[0]       _eventsCount: 2,
+[0]       _maxListeners: undefined,
+[0]       _writableState: [WritableState],
+[0]       allowHalfOpen: true,
+[0]       [Symbol(kCapture)]: false,
+[0]       [Symbol(kCallback)]: null
+[0]     },
+[0]     disturbed: false,
+[0]     error: null
+[0]   },
+[0]   [Symbol(Response internals)]: {
+[0]     url: 'https://api-mt1.pusher.com/apps/2033830/events?auth_key=4749f069a99aaecef0a6&auth_timestamp=1754630307&auth_version=1.0&body_md5=a8828161d6ab9e5c4bf44022fff6c653&auth_signature=c718b2fb89bd054c66ac81653995fa2b8d7d545c872500b02926c77e7a2c6e9e',
+[0]     status: 200,
+[0]     statusText: 'OK',
+[0]     headers: Headers { [Symbol(map)]: [Object: null prototype] },
+[0]     counter: 0
+[0]   }
+[0] }
+[0] 📡 PUSHER API: Sending manager:newPlayer to manager channel: room-32ZFG2-manager
+[0] 📡 PUSHER API: Manager event data: { id: 'td6bm8khd', username: 'Player1', room: '32ZFG2', points: 0 }
+[0] 📨 PUSHER API: Received request: { event: 'player:checkRoom', data: '32ZFG2' }
+[0] 🔍 PUSHER API: handleCheckRoom called with roomId: 32ZFG2
+[0] 🔍 PUSHER API: Available rooms: [ '1GMDO6', 'Z2ZGEH', 'X9LP6M', 'NQDXJ1', 'Y8UHY5', '32ZFG2' ]
+[0] 🔍 PUSHER API: Total rooms: 6
+[0] ✅ PUSHER API: Room found, sending game:successRoom event for roomId: 32ZFG2
+[0] 🚀 PUSHER API: Triggering game:successRoom on global channel...
+[0] ✅ PUSHER API: Manager event result: Response {
+[0]   size: 0,
+[0]   timeout: 0,
+[0]   [Symbol(Body internals)]: {
+[0]     body: PassThrough {
+[0]       _readableState: [ReadableState],
+[0]       _events: [Object: null prototype],
+[0]       _eventsCount: 2,
+[0]       _maxListeners: undefined,
+[0]       _writableState: [WritableState],
+[0]       allowHalfOpen: true,
+[0]       [Symbol(kCapture)]: false,
+[0]       [Symbol(kCallback)]: null
+[0]     },
+[0]     disturbed: false,
+[0]     error: null
+[0]   },
+[0]   [Symbol(Response internals)]: {
+[0]     url: 'https://api-mt1.pusher.com/apps/2033830/events?auth_key=4749f069a99aaecef0a6&auth_timestamp=1754630307&auth_version=1.0&body_md5=54036fe357eff8cb7291e3168baf5acb&auth_signature=a2101813ece8542568fc69d60c3423619dc05352ce25057d22287a909be62cd6',
+[0]     status: 200,
+[0]     statusText: 'OK',
+[0]     headers: Headers { [Symbol(map)]: [Object: null prototype] },
+[0]     counter: 0
+[0]   }
+[0] }
+[0] ✅ PUSHER API: All events sent successfully
+[0] ✅ PUSHER API: Global trigger result: Response {
+[0]   size: 0,
+[0]   timeout: 0,
+[0]   [Symbol(Body internals)]: {
+[0]     body: PassThrough {
+[0]       _readableState: [ReadableState],
+[0]       _events: [Object: null prototype],
+[0]       _eventsCount: 2,
+[0]       _maxListeners: undefined,
+[0]       _writableState: [WritableState],
+[0]       allowHalfOpen: true,
+[0]       [Symbol(kCapture)]: false,
+[0]       [Symbol(kCallback)]: null
+[0]     },
+[0]     disturbed: false,
+[0]     error: null
+[0]   },
+[0]   [Symbol(Response internals)]: {
+[0]     url: 'https://api-mt1.pusher.com/apps/2033830/events?auth_key=4749f069a99aaecef0a6&auth_timestamp=1754630307&auth_version=1.0&body_md5=32f9662dd7c8d5eb7d80f4ad97210ce0&auth_signature=bd546ca53694f1ece73b28d07ba5443194384de043203a8b49f7e3b7b7da6be0',
+[0]     status: 200,
+[0]     statusText: 'OK',
+[0]     headers: Headers { [Symbol(map)]: [Object: null prototype] },
+[0]     counter: 0
+[0]   }
+[0] }
+[0] 🚀 PUSHER API: Triggering game:successRoom on room-32ZFG2 channel...
+[0] ✅ PUSHER API: Room trigger result: Response {
+[0]   size: 0,
+[0]   timeout: 0,
+[0]   [Symbol(Body internals)]: {
+[0]     body: PassThrough {
+[0]       _readableState: [ReadableState],
+[0]       _events: [Object: null prototype],
+[0]       _eventsCount: 2,
+[0]       _maxListeners: undefined,
+[0]       _writableState: [WritableState],
+[0]       allowHalfOpen: true,
+[0]       [Symbol(kCapture)]: false,
+[0]       [Symbol(kCallback)]: null
+[0]     },
+[0]     disturbed: false,
+[0]     error: null
+[0]   },
+[0]   [Symbol(Response internals)]: {
+[0]     url: 'https://api-mt1.pusher.com/apps/2033830/events?auth_key=4749f069a99aaecef0a6&auth_timestamp=1754630307&auth_version=1.0&body_md5=bdbe64583d2f2e154f1cd35df9e88e64&auth_signature=caac4938d0a69705965fbd92fc4b360ebe20698662bb4e062dfe159347d0a26c',
+[0]     status: 200,
+[0]     statusText: 'OK',
+[0]     headers: Headers { [Symbol(map)]: [Object: null prototype] },
+[0]     counter: 0
+[0]   }
+[0] }
+[0]  POST /api/pusher 200 in 472ms
+[0] 📨 PUSHER API: Received request: { event: 'manager:startGame', data: { roomId: '32ZFG2' } }
+[0] 🎮 PUSHER API: handleStartGame called with roomId: 32ZFG2
+[0] 🔍 PUSHER API: Available rooms at start: [ '1GMDO6', 'Z2ZGEH', 'X9LP6M', 'NQDXJ1', 'Y8UHY5', '32ZFG2' ]
+[0] 🔍 PUSHER API: Total rooms: 6
+[0] ✅ PUSHER API: Room found for game start: 32ZFG2 Players: 1
+[0]  POST /api/pusher 200 in 314ms
+[0] 📨 PUSHER API: Received request: { event: 'manager:startGame', data: { roomId: '32ZFG2' } }
+[0] 🎮 PUSHER API: handleStartGame called with roomId: 32ZFG2
+[0] 🔍 PUSHER API: Available rooms at start: [ '1GMDO6', 'Z2ZGEH', 'X9LP6M', 'NQDXJ1', 'Y8UHY5', '32ZFG2' ]
+[0] 🔍 PUSHER API: Total rooms: 6
+[0] ✅ PUSHER API: Room found for game start: 32ZFG2 Players: 1
+[0]  POST /api/pusher 200 in 321ms
+[0] 📨 PUSHER API: Received request: { event: 'manager:startGame', data: { roomId: '32ZFG2' } }
+[0] 🎮 PUSHER API: handleStartGame called with roomId: 32ZFG2
+[0] 🔍 PUSHER API: Available rooms at start: [ '1GMDO6', 'Z2ZGEH', 'X9LP6M', 'NQDXJ1', 'Y8UHY5', '32ZFG2' ]
+[0] 🔍 PUSHER API: Total rooms: 6
+[0] ✅ PUSHER API: Room found for game start: 32ZFG2 Players: 1
+[0]  POST /api/pusher 200 in 237ms
+[0] Manager: Rendering with state.created = false state = {
+[0]   status: { name: 'SHOW_ROOM', data: { text: 'Waiting for the players' } },
+[0]   question: { current: 1, total: null },
+[0]   created: false
+[0] }
+[0]  GET /manager 200 in 18ms
+[0] 📨 PUSHER API: Received request: { event: 'manager:createRoom', data: 'admin123' }
+[0] ✨ PUSHER API: Creating room with ID: YJM1NT
+[0] ✨ PUSHER API: Room stored, total rooms now: 7
+[0] Sending manager:inviteCode to channel: room-YJM1NT-manager with roomId: YJM1NT
+[0]  POST /api/pusher 200 in 901ms
+[0]  GET / 200 in 15ms
+[0] 📨 PUSHER API: Received request: { event: 'player:checkRoom', data: 'YJM1NT' }
+[0] 🔍 PUSHER API: handleCheckRoom called with roomId: YJM1NT
+[0] 🔍 PUSHER API: Available rooms: [
+[0]   '1GMDO6', 'Z2ZGEH',
+[0]   'X9LP6M', 'NQDXJ1',
+[0]   'Y8UHY5', '32ZFG2',
+[0]   'YJM1NT'
+[0] ]
+[0] 🔍 PUSHER API: Total rooms: 7
+[0] ✅ PUSHER API: Room found, sending game:successRoom event for roomId: YJM1NT
+[0] 🚀 PUSHER API: Triggering game:successRoom on global channel...
+[0] ✅ PUSHER API: Global trigger result: Response {
+[0]   size: 0,
+[0]   timeout: 0,
+[0]   [Symbol(Body internals)]: {
+[0]     body: PassThrough {
+[0]       _readableState: [ReadableState],
+[0]       _events: [Object: null prototype],
+[0]       _eventsCount: 2,
+[0]       _maxListeners: undefined,
+[0]       _writableState: [WritableState],
+[0]       allowHalfOpen: true,
+[0]       [Symbol(kCapture)]: false,
+[0]       [Symbol(kCallback)]: null
+[0]     },
+[0]     disturbed: false,
+[0]     error: null
+[0]   },
+[0]   [Symbol(Response internals)]: {
+[0]     url: 'https://api-mt1.pusher.com/apps/2033830/events?auth_key=4749f069a99aaecef0a6&auth_timestamp=1754630837&auth_version=1.0&body_md5=0efb20276559ba194913872a9d662d18&auth_signature=a2ad5930c84b7297edbe2f50114311d8fa571e4a671aac68119a5d1a39c7c297',
+[0]     status: 200,
+[0]     statusText: 'OK',
+[0]     headers: Headers { [Symbol(map)]: [Object: null prototype] },
+[0]     counter: 0
+[0]   }
+[0] }
+[0] 🚀 PUSHER API: Triggering game:successRoom on room-YJM1NT channel...
+[0] ✅ PUSHER API: Room trigger result: Response {
+[0]   size: 0,
+[0]   timeout: 0,
+[0]   [Symbol(Body internals)]: {
+[0]     body: PassThrough {
+[0]       _readableState: [ReadableState],
+[0]       _events: [Object: null prototype],
+[0]       _eventsCount: 2,
+[0]       _maxListeners: undefined,
+[0]       _writableState: [WritableState],
+[0]       allowHalfOpen: true,
+[0]       [Symbol(kCapture)]: false,
+[0]       [Symbol(kCallback)]: null
+[0]     },
+[0]     disturbed: false,
+[0]     error: null
+[0]   },
+[0]   [Symbol(Response internals)]: {
+[0]     url: 'https://api-mt1.pusher.com/apps/2033830/events?auth_key=4749f069a99aaecef0a6&auth_timestamp=1754630838&auth_version=1.0&body_md5=93651022c1b11a1807143fd1f1734a93&auth_signature=120887e8deb70e5a181a07aa88ac6b5005ba812a113c80be61f096abd572c5f6',
+[0]     status: 200,
+[0]     statusText: 'OK',
+[0]     headers: Headers { [Symbol(map)]: [Object: null prototype] },
+[0]     counter: 0
+[0]   }
+[0] }
+[0]  POST /api/pusher 200 in 547ms
+[0] 📨 PUSHER API: Received request: {
+[0]   event: 'player:join',
+[0]   data: { username: 'TestPlayer', room: 'YJM1NT' }
+[0] }
+[0] 🎮 PUSHER API: handlePlayerJoin called with username: TestPlayer roomId: YJM1NT
+[0] ✅ PUSHER API: Player joined successfully, sending game:successJoin event
+[0] 🔍 PUSHER API: Room after player join - Total players: 1
+[0] 🔍 PUSHER API: Room stored successfully, available rooms: [
+[0]   '1GMDO6', 'Z2ZGEH',
+[0]   'X9LP6M', 'NQDXJ1',
+[0]   'Y8UHY5', '32ZFG2',
+[0]   'YJM1NT'
+[0] ]
+[0] 🚀 PUSHER API: Sending player join events...
+[0] 📡 PUSHER API: Sending game:successJoin to global channel
+[0]  POST /api/pusher 200 in 3ms
+[0] ✅ PUSHER API: Global event result: Response {
+[0]   size: 0,
+[0]   timeout: 0,
+[0]   [Symbol(Body internals)]: {
+[0]     body: PassThrough {
+[0]       _readableState: [ReadableState],
+[0]       _events: [Object: null prototype],
+[0]       _eventsCount: 2,
+[0]       _maxListeners: undefined,
+[0]       _writableState: [WritableState],
+[0]       allowHalfOpen: true,
+[0]       [Symbol(kCapture)]: false,
+[0]       [Symbol(kCallback)]: null
+[0]     },
+[0]     disturbed: false,
+[0]     error: null
+[0]   },
+[0]   [Symbol(Response internals)]: {
+[0]     url: 'https://api-mt1.pusher.com/apps/2033830/events?auth_key=4749f069a99aaecef0a6&auth_timestamp=1754630839&auth_version=1.0&body_md5=648c83ad413db15cccee432ec421b375&auth_signature=7ba59f4d0e625aa32e9f947e56b73f1ed03266b256a6c6c70c1156f2c6d30b08',
+[0]     status: 200,
+[0]     statusText: 'OK',
+[0]     headers: Headers { [Symbol(map)]: [Object: null prototype] },
+[0]     counter: 0
+[0]   }
+[0] }
+[0] 📡 PUSHER API: Sending player:joined to room channel: room-YJM1NT
+[0] ✅ PUSHER API: Room event result: Response {
+[0]   size: 0,
+[0]   timeout: 0,
+[0]   [Symbol(Body internals)]: {
+[0]     body: PassThrough {
+[0]       _readableState: [ReadableState],
+[0]       _events: [Object: null prototype],
+[0]       _eventsCount: 2,
+[0]       _maxListeners: undefined,
+[0]       _writableState: [WritableState],
+[0]       allowHalfOpen: true,
+[0]       [Symbol(kCapture)]: false,
+[0]       [Symbol(kCallback)]: null
+[0]     },
+[0]     disturbed: false,
+[0]     error: null
+[0]   },
+[0]   [Symbol(Response internals)]: {
+[0]     url: 'https://api-mt1.pusher.com/apps/2033830/events?auth_key=4749f069a99aaecef0a6&auth_timestamp=1754630840&auth_version=1.0&body_md5=706853d846c7e9754b05f091ee0d2795&auth_signature=1008d274e4b74939a7e40d0a6df73f6c8c41a91b14163c101758feb8fdf31cc2',
+[0]     status: 200,
+[0]     statusText: 'OK',
+[0]     headers: Headers { [Symbol(map)]: [Object: null prototype] },
+[0]     counter: 0
+[0]   }
+[0] }
+[0] 📡 PUSHER API: Sending manager:newPlayer to manager channel: room-YJM1NT-manager
+[0] 📡 PUSHER API: Manager event data: { id: 'c1aa8fhd5', username: 'TestPlayer', room: 'YJM1NT', points: 0 }
+[0] ✅ PUSHER API: Manager event result: Response {
+[0]   size: 0,
+[0]   timeout: 0,
+[0]   [Symbol(Body internals)]: {
+[0]     body: PassThrough {
+[0]       _readableState: [ReadableState],
+[0]       _events: [Object: null prototype],
+[0]       _eventsCount: 2,
+[0]       _maxListeners: undefined,
+[0]       _writableState: [WritableState],
+[0]       allowHalfOpen: true,
+[0]       [Symbol(kCapture)]: false,
+[0]       [Symbol(kCallback)]: null
+[0]     },
+[0]     disturbed: false,
+[0]     error: null
+[0]   },
+[0]   [Symbol(Response internals)]: {
+[0]     url: 'https://api-mt1.pusher.com/apps/2033830/events?auth_key=4749f069a99aaecef0a6&auth_timestamp=1754630840&auth_version=1.0&body_md5=05968baae94c89a6b0d7a426460836d7&auth_signature=bbae644d6fd4e6af17e49fd458b2d561bb5ba1861d3b70dbe02c6f24b233a33a',
+[0]     status: 200,
+[0]     statusText: 'OK',
+[0]     headers: Headers { [Symbol(map)]: [Object: null prototype] },
+[0]     counter: 0
+[0]   }
+[0] }
+[0] ✅ PUSHER API: All events sent successfully
+[0] 📨 PUSHER API: Received request: { event: 'manager:startGame', data: { roomId: 'YJM1NT' } }
+[0] 🎮 PUSHER API: handleStartGame called with roomId: YJM1NT
+[0] 🔍 PUSHER API: Available rooms at start: [
+[0]   '1GMDO6', 'Z2ZGEH',
+[0]   'X9LP6M', 'NQDXJ1',
+[0]   'Y8UHY5', '32ZFG2',
+[0]   'YJM1NT'
+[0] ]
+[0] 🔍 PUSHER API: Total rooms: 7
+[0] ✅ PUSHER API: Room found for game start: YJM1NT Players: 1
+[0]  POST /api/pusher 200 in 315ms
+[0] 📨 PUSHER API: Received request: { event: 'manager:startGame', data: { roomId: 'YJM1NT' } }
+[0] 🎮 PUSHER API: handleStartGame called with roomId: YJM1NT
+[0] 🔍 PUSHER API: Available rooms at start: [
+[0]   '1GMDO6', 'Z2ZGEH',
+[0]   'X9LP6M', 'NQDXJ1',
+[0]   'Y8UHY5', '32ZFG2',
+[0]   'YJM1NT'
+[0] ]
+[0] 🔍 PUSHER API: Total rooms: 7
+[0] ✅ PUSHER API: Room found for game start: YJM1NT Players: 1
+[0]  POST /api/pusher 200 in 329ms
+[0] 📨 PUSHER API: Received request: { event: 'manager:startGame', data: { roomId: 'YJM1NT' } }
+[0] 🎮 PUSHER API: handleStartGame called with roomId: YJM1NT
+[0] 🔍 PUSHER API: Available rooms at start: [
+[0]   '1GMDO6', 'Z2ZGEH',
+[0]   'X9LP6M', 'NQDXJ1',
+[0]   'Y8UHY5', '32ZFG2',
+[0]   'YJM1NT'
+[0] ]
+[0] 🔍 PUSHER API: Total rooms: 7
+[0] ✅ PUSHER API: Room found for game start: YJM1NT Players: 1
+[0]  POST /api/pusher 200 in 342ms
+[0] 📨 PUSHER API: Received request: { event: 'manager:startGame', data: { roomId: 'YJM1NT' } }
+[0] 🎮 PUSHER API: handleStartGame called with roomId: YJM1NT
+[0] 🔍 PUSHER API: Available rooms at start: [
+[0]   '1GMDO6', 'Z2ZGEH',
+[0]   'X9LP6M', 'NQDXJ1',
+[0]   'Y8UHY5', '32ZFG2',
+[0]   'YJM1NT'
+[0] ]
+[0] 🔍 PUSHER API: Total rooms: 7
+[0] ✅ PUSHER API: Room found for game start: YJM1NT Players: 1
+[0]  POST /api/pusher 200 in 241ms
+[1] user disconnected mMTCDd97xS2SgWVuAAAB
+[1] A user connected VmQkf7aVy5R7a3CsAAAD
+[0]  ✓ Compiled in 577ms (443 modules)
+[0]  ✓ Compiled in 179ms (272 modules)
+[0]  ✓ Compiled in 182ms (272 modules)
+[0]  ✓ Compiled in 401ms (443 modules)
+[0]  ✓ Compiled in 258ms (443 modules)
+[0]  ✓ Compiled in 307ms (272 modules)
+[0]  ✓ Compiled in 201ms (272 modules)
+[0]  ✓ Compiled in 177ms (272 modules)
+[0]  ✓ Compiled in 204ms (272 modules)
+[0]  ✓ Compiled in 189ms (272 modules)
+[0]  ✓ Compiled in 243ms (272 modules)
+[0]  ✓ Compiled in 146ms (272 modules)
+[0]  ✓ Compiled in 131ms (272 modules)
+[0]  ✓ Compiled in 211ms (272 modules)
+[0]  ✓ Compiled in 453ms (443 modules)
+[0]  ✓ Compiled in 244ms (443 modules)
+[0]  ✓ Compiled in 196ms (443 modules)
+[0]  ✓ Compiled in 202ms (443 modules)
+[0]  ✓ Compiled /_error in 261ms (445 modules)
+[0]  GET /manager 404 in 294ms
+[0]  ✓ Compiled / in 238ms (447 modules)
+[0]  GET / 404 in 259ms
+[0]  GET / 404 in 4ms
+[0] TypeError: __webpack_modules__[moduleId] is not a function
+[0]     at __webpack_require__ (/Users/itziklerner/dev/uniper/opentrivia/.next/server/webpack-runtime.js:33:42)
+[0]     at eval (webpack-internal:///./src/components/game/GameWrapper.jsx:8:68)
+[0]     at __webpack_require__.a (/Users/itziklerner/dev/uniper/opentrivia/.next/server/webpack-runtime.js:97:13)
+[0]     at eval (webpack-internal:///./src/components/game/GameWrapper.jsx:1:21)
+[0]     at ./src/components/game/GameWrapper.jsx (/Users/itziklerner/dev/uniper/opentrivia/.next/server/pages/manager.js:143:1)
+[0]     at __webpack_require__ (/Users/itziklerner/dev/uniper/opentrivia/.next/server/webpack-runtime.js:33:42)
+[0]     at eval (webpack-internal:///./src/pages/manager.jsx:9:86)
+[0]     at __webpack_require__.a (/Users/itziklerner/dev/uniper/opentrivia/.next/server/webpack-runtime.js:97:13)
+[0]     at eval (webpack-internal:///./src/pages/manager.jsx:1:21)
+[0]     at ./src/pages/manager.jsx (/Users/itziklerner/dev/uniper/opentrivia/.next/server/pages/manager.js:385:1)
+[0]     at __webpack_require__ (/Users/itziklerner/dev/uniper/opentrivia/.next/server/webpack-runtime.js:33:42)
+[0]     at eval (webpack-internal:///./node_modules/next/dist/build/webpack/loaders/next-route-loader/index.js?kind=PAGES&page=%2Fmanager&preferredRegion=&absolutePagePath=.%2Fsrc%2Fpages%2Fmanager.jsx&absoluteAppPath=private-next-pages%2F_app&absoluteDocumentPath=private-next-pages%2F_document&middlewareConfigBase64=e30%3D!:23:80)
+[0]     at __webpack_require__.a (/Users/itziklerner/dev/uniper/opentrivia/.next/server/webpack-runtime.js:97:13)
+[0]     at eval (webpack-internal:///./node_modules/next/dist/build/webpack/loaders/next-route-loader/index.js?kind=PAGES&page=%2Fmanager&preferredRegion=&absolutePagePath=.%2Fsrc%2Fpages%2Fmanager.jsx&absoluteAppPath=private-next-pages%2F_app&absoluteDocumentPath=private-next-pages%2F_document&middlewareConfigBase64=e30%3D!:1:21)
+[0]     at ./node_modules/next/dist/build/webpack/loaders/next-route-loader/index.js?kind=PAGES&page=%2Fmanager&preferredRegion=&absolutePagePath=.%2Fsrc%2Fpages%2Fmanager.jsx&absoluteAppPath=private-next-pages%2F_app&absoluteDocumentPath=private-next-pages%2F_document&middlewareConfigBase64=e30%3D! (/Users/itziklerner/dev/uniper/opentrivia/.next/server/pages/manager.js:55:1)
+[0] TypeError: __webpack_modules__[moduleId] is not a function
+[0]     at __webpack_require__ (/Users/itziklerner/dev/uniper/opentrivia/.next/server/webpack-runtime.js:33:42)
+[0]     at eval (webpack-internal:///./src/components/ManagerPassword.jsx:8:68)
+[0]     at __webpack_require__.a (/Users/itziklerner/dev/uniper/opentrivia/.next/server/webpack-runtime.js:97:13)
+[0]     at eval (webpack-internal:///./src/components/ManagerPassword.jsx:1:21)
+[0]     at ./src/components/ManagerPassword.jsx (/Users/itziklerner/dev/uniper/opentrivia/.next/server/pages/manager.js:121:1)
+[0]     at __webpack_require__ (/Users/itziklerner/dev/uniper/opentrivia/.next/server/webpack-runtime.js:33:42)
+[0]     at eval (webpack-internal:///./src/pages/manager.jsx:10:85)
+[0]     at __webpack_require__.a (/Users/itziklerner/dev/uniper/opentrivia/.next/server/webpack-runtime.js:97:13)
+[0]     at eval (webpack-internal:///./src/pages/manager.jsx:1:21)
+[0]     at ./src/pages/manager.jsx (/Users/itziklerner/dev/uniper/opentrivia/.next/server/pages/manager.js:385:1)
+[0]     at __webpack_require__ (/Users/itziklerner/dev/uniper/opentrivia/.next/server/webpack-runtime.js:33:42)
+[0]     at eval (webpack-internal:///./node_modules/next/dist/build/webpack/loaders/next-route-loader/index.js?kind=PAGES&page=%2Fmanager&preferredRegion=&absolutePagePath=.%2Fsrc%2Fpages%2Fmanager.jsx&absoluteAppPath=private-next-pages%2F_app&absoluteDocumentPath=private-next-pages%2F_document&middlewareConfigBase64=e30%3D!:23:80)
+[0]     at __webpack_require__.a (/Users/itziklerner/dev/uniper/opentrivia/.next/server/webpack-runtime.js:97:13)
+[0]     at eval (webpack-internal:///./node_modules/next/dist/build/webpack/loaders/next-route-loader/index.js?kind=PAGES&page=%2Fmanager&preferredRegion=&absolutePagePath=.%2Fsrc%2Fpages%2Fmanager.jsx&absoluteAppPath=private-next-pages%2F_app&absoluteDocumentPath=private-next-pages%2F_document&middlewareConfigBase64=e30%3D!:1:21)
+[0]     at ./node_modules/next/dist/build/webpack/loaders/next-route-loader/index.js?kind=PAGES&page=%2Fmanager&preferredRegion=&absolutePagePath=.%2Fsrc%2Fpages%2Fmanager.jsx&absoluteAppPath=private-next-pages%2F_app&absoluteDocumentPath=private-next-pages%2F_document&middlewareConfigBase64=e30%3D! (/Users/itziklerner/dev/uniper/opentrivia/.next/server/pages/manager.js:55:1)
+[0] TypeError: __webpack_modules__[moduleId] is not a function
+[0]     at __webpack_require__ (/Users/itziklerner/dev/uniper/opentrivia/.next/server/webpack-runtime.js:33:42)
+[0]     at eval (webpack-internal:///./src/components/Loader.jsx:8:68)
+[0]     at ./src/components/Loader.jsx (/Users/itziklerner/dev/uniper/opentrivia/.next/server/pages/manager.js:110:1)
+[0]     at __webpack_require__ (/Users/itziklerner/dev/uniper/opentrivia/.next/server/webpack-runtime.js:33:42)
+[0]     at eval (webpack-internal:///./src/components/game/states/Wait.jsx:7:76)
+[0]     at ./src/components/game/states/Wait.jsx (/Users/itziklerner/dev/uniper/opentrivia/.next/server/pages/manager.js:242:1)
+[0]     at __webpack_require__ (/Users/itziklerner/dev/uniper/opentrivia/.next/server/webpack-runtime.js:33:42)
+[0]     at eval (webpack-internal:///./src/constants.js:25:86)
+[0]     at __webpack_require__.a (/Users/itziklerner/dev/uniper/opentrivia/.next/server/webpack-runtime.js:97:13)
+[0]     at eval (webpack-internal:///./src/constants.js:1:21)
+[0]     at ./src/constants.js (/Users/itziklerner/dev/uniper/opentrivia/.next/server/pages/manager.js:319:1)
+[0]     at __webpack_require__ (/Users/itziklerner/dev/uniper/opentrivia/.next/server/webpack-runtime.js:33:42)
+[0]     at eval (webpack-internal:///./src/pages/manager.jsx:11:68)
+[0]     at __webpack_require__.a (/Users/itziklerner/dev/uniper/opentrivia/.next/server/webpack-runtime.js:97:13)
+[0]     at eval (webpack-internal:///./src/pages/manager.jsx:1:21)
+[0] TypeError: __webpack_modules__[moduleId] is not a function
+[0]     at __webpack_require__ (/Users/itziklerner/dev/uniper/opentrivia/.next/server/webpack-runtime.js:33:42)
+[0]     at eval (webpack-internal:///./src/components/Loader.jsx:8:68)
+[0]     at ./src/components/Loader.jsx (/Users/itziklerner/dev/uniper/opentrivia/.next/server/pages/manager.js:110:1)
+[0]     at __webpack_require__ (/Users/itziklerner/dev/uniper/opentrivia/.next/server/webpack-runtime.js:33:42)
+[0]     at eval (webpack-internal:///./src/components/game/states/Wait.jsx:7:76)
+[0]     at ./src/components/game/states/Wait.jsx (/Users/itziklerner/dev/uniper/opentrivia/.next/server/pages/manager.js:242:1)
+[0]     at __webpack_require__ (/Users/itziklerner/dev/uniper/opentrivia/.next/server/webpack-runtime.js:33:42)
+[0]     at eval (webpack-internal:///./src/constants.js:25:86)
+[0]     at __webpack_require__.a (/Users/itziklerner/dev/uniper/opentrivia/.next/server/webpack-runtime.js:97:13)
+[0]     at eval (webpack-internal:///./src/constants.js:1:21)
+[0]     at ./src/constants.js (/Users/itziklerner/dev/uniper/opentrivia/.next/server/pages/manager.js:319:1)
+[0]     at __webpack_require__ (/Users/itziklerner/dev/uniper/opentrivia/.next/server/webpack-runtime.js:33:42)
+[0]     at eval (webpack-internal:///./src/pages/manager.jsx:11:68)
+[0]     at __webpack_require__.a (/Users/itziklerner/dev/uniper/opentrivia/.next/server/webpack-runtime.js:97:13)
+[0]     at eval (webpack-internal:///./src/pages/manager.jsx:1:21)
+[0] TypeError: __webpack_modules__[moduleId] is not a function
+[0]     at __webpack_require__ (/Users/itziklerner/dev/uniper/opentrivia/.next/server/webpack-runtime.js:33:42)
+[0]     at eval (webpack-internal:///./src/components/Loader.jsx:8:68)
+[0]     at ./src/components/Loader.jsx (/Users/itziklerner/dev/uniper/opentrivia/.next/server/pages/manager.js:110:1)
+[0]     at __webpack_require__ (/Users/itziklerner/dev/uniper/opentrivia/.next/server/webpack-runtime.js:33:42)
+[0]     at eval (webpack-internal:///./src/components/game/states/Wait.jsx:7:76)
+[0]     at ./src/components/game/states/Wait.jsx (/Users/itziklerner/dev/uniper/opentrivia/.next/server/pages/manager.js:242:1)
+[0]     at __webpack_require__ (/Users/itziklerner/dev/uniper/opentrivia/.next/server/webpack-runtime.js:33:42)
+[0]     at eval (webpack-internal:///./src/constants.js:25:86)
+[0]     at __webpack_require__.a (/Users/itziklerner/dev/uniper/opentrivia/.next/server/webpack-runtime.js:97:13)
+[0]     at eval (webpack-internal:///./src/constants.js:1:21)
+[0]     at ./src/constants.js (/Users/itziklerner/dev/uniper/opentrivia/.next/server/pages/manager.js:319:1)
+[0]     at __webpack_require__ (/Users/itziklerner/dev/uniper/opentrivia/.next/server/webpack-runtime.js:33:42)
+[0]     at eval (webpack-internal:///./src/pages/manager.jsx:11:68)
+[0]     at __webpack_require__.a (/Users/itziklerner/dev/uniper/opentrivia/.next/server/webpack-runtime.js:97:13)
+[0]     at eval (webpack-internal:///./src/pages/manager.jsx:1:21)
+[0]  ⨯ TypeError: __webpack_modules__[moduleId] is not a function
+[0]     at __webpack_require__ (/Users/itziklerner/dev/uniper/opentrivia/.next/server/webpack-runtime.js:33:42)
+[0]     at eval (webpack-internal:///./src/pages/manager.jsx:14:69)
+[0]     at __webpack_require__.a (/Users/itziklerner/dev/uniper/opentrivia/.next/server/webpack-runtime.js:97:13)
+[0]     at eval (webpack-internal:///./src/pages/manager.jsx:1:21)
+[0]     at ./src/pages/manager.jsx (/Users/itziklerner/dev/uniper/opentrivia/.next/server/pages/manager.js:385:1)
+[0]     at __webpack_require__ (/Users/itziklerner/dev/uniper/opentrivia/.next/server/webpack-runtime.js:33:42)
+[0]     at eval (webpack-internal:///./node_modules/next/dist/build/webpack/loaders/next-route-loader/index.js?kind=PAGES&page=%2Fmanager&preferredRegion=&absolutePagePath=.%2Fsrc%2Fpages%2Fmanager.jsx&absoluteAppPath=private-next-pages%2F_app&absoluteDocumentPath=private-next-pages%2F_document&middlewareConfigBase64=e30%3D!:23:80)
+[0]     at __webpack_require__.a (/Users/itziklerner/dev/uniper/opentrivia/.next/server/webpack-runtime.js:97:13)
+[0]     at eval (webpack-internal:///./node_modules/next/dist/build/webpack/loaders/next-route-loader/index.js?kind=PAGES&page=%2Fmanager&preferredRegion=&absolutePagePath=.%2Fsrc%2Fpages%2Fmanager.jsx&absoluteAppPath=private-next-pages%2F_app&absoluteDocumentPath=private-next-pages%2F_document&middlewareConfigBase64=e30%3D!:1:21)
+[0]     at ./node_modules/next/dist/build/webpack/loaders/next-route-loader/index.js?kind=PAGES&page=%2Fmanager&preferredRegion=&absolutePagePath=.%2Fsrc%2Fpages%2Fmanager.jsx&absoluteAppPath=private-next-pages%2F_app&absoluteDocumentPath=private-next-pages%2F_document&middlewareConfigBase64=e30%3D! (/Users/itziklerner/dev/uniper/opentrivia/.next/server/pages/manager.js:55:1)
+[0]     at __webpack_require__ (/Users/itziklerner/dev/uniper/opentrivia/.next/server/webpack-runtime.js:33:42)
+[0]     at __webpack_exec__ (/Users/itziklerner/dev/uniper/opentrivia/.next/server/pages/manager.js:581:39)
+[0]     at /Users/itziklerner/dev/uniper/opentrivia/.next/server/pages/manager.js:582:104
+[0]     at __webpack_require__.X (/Users/itziklerner/dev/uniper/opentrivia/.next/server/webpack-runtime.js:185:21)
+[0]     at /Users/itziklerner/dev/uniper/opentrivia/.next/server/pages/manager.js:582:47 {
+[0]   page: '/manager'
+[0] }
+[0]  ⨯ unhandledRejection: TypeError: __webpack_modules__[moduleId] is not a function
+[0]     at __webpack_require__ (/Users/itziklerner/dev/uniper/opentrivia/.next/server/webpack-runtime.js:33:42)
+[0]     at eval (webpack-internal:///./src/components/game/GameWrapper.jsx:8:68)
+[0]     at __webpack_require__.a (/Users/itziklerner/dev/uniper/opentrivia/.next/server/webpack-runtime.js:97:13)
+[0]     at eval (webpack-internal:///./src/components/game/GameWrapper.jsx:1:21)
+[0]     at ./src/components/game/GameWrapper.jsx (/Users/itziklerner/dev/uniper/opentrivia/.next/server/pages/manager.js:143:1)
+[0]     at __webpack_require__ (/Users/itziklerner/dev/uniper/opentrivia/.next/server/webpack-runtime.js:33:42)
+[0]     at eval (webpack-internal:///./src/pages/manager.jsx:9:86)
+[0]     at __webpack_require__.a (/Users/itziklerner/dev/uniper/opentrivia/.next/server/webpack-runtime.js:97:13)
+[0]     at eval (webpack-internal:///./src/pages/manager.jsx:1:21)
+[0]     at ./src/pages/manager.jsx (/Users/itziklerner/dev/uniper/opentrivia/.next/server/pages/manager.js:385:1)
+[0]     at __webpack_require__ (/Users/itziklerner/dev/uniper/opentrivia/.next/server/webpack-runtime.js:33:42)
+[0]     at eval (webpack-internal:///./node_modules/next/dist/build/webpack/loaders/next-route-loader/index.js?kind=PAGES&page=%2Fmanager&preferredRegion=&absolutePagePath=.%2Fsrc%2Fpages%2Fmanager.jsx&absoluteAppPath=private-next-pages%2F_app&absoluteDocumentPath=private-next-pages%2F_document&middlewareConfigBase64=e30%3D!:23:80)
+[0]     at __webpack_require__.a (/Users/itziklerner/dev/uniper/opentrivia/.next/server/webpack-runtime.js:97:13)
+[0]     at eval (webpack-internal:///./node_modules/next/dist/build/webpack/loaders/next-route-loader/index.js?kind=PAGES&page=%2Fmanager&preferredRegion=&absolutePagePath=.%2Fsrc%2Fpages%2Fmanager.jsx&absoluteAppPath=private-next-pages%2F_app&absoluteDocumentPath=private-next-pages%2F_document&middlewareConfigBase64=e30%3D!:1:21)
+[0]     at ./node_modules/next/dist/build/webpack/loaders/next-route-loader/index.js?kind=PAGES&page=%2Fmanager&preferredRegion=&absolutePagePath=.%2Fsrc%2Fpages%2Fmanager.jsx&absoluteAppPath=private-next-pages%2F_app&absoluteDocumentPath=private-next-pages%2F_document&middlewareConfigBase64=e30%3D! (/Users/itziklerner/dev/uniper/opentrivia/.next/server/pages/manager.js:55:1)
+[0]  ⨯ unhandledRejection: TypeError: __webpack_modules__[moduleId] is not a function
+[0]     at __webpack_require__ (/Users/itziklerner/dev/uniper/opentrivia/.next/server/webpack-runtime.js:33:42)
+[0]     at eval (webpack-internal:///./src/components/ManagerPassword.jsx:8:68)
+[0]     at __webpack_require__.a (/Users/itziklerner/dev/uniper/opentrivia/.next/server/webpack-runtime.js:97:13)
+[0]     at eval (webpack-internal:///./src/components/ManagerPassword.jsx:1:21)
+[0]     at ./src/components/ManagerPassword.jsx (/Users/itziklerner/dev/uniper/opentrivia/.next/server/pages/manager.js:121:1)
+[0]     at __webpack_require__ (/Users/itziklerner/dev/uniper/opentrivia/.next/server/webpack-runtime.js:33:42)
+[0]     at eval (webpack-internal:///./src/pages/manager.jsx:10:85)
+[0]     at __webpack_require__.a (/Users/itziklerner/dev/uniper/opentrivia/.next/server/webpack-runtime.js:97:13)
+[0]     at eval (webpack-internal:///./src/pages/manager.jsx:1:21)
+[0]     at ./src/pages/manager.jsx (/Users/itziklerner/dev/uniper/opentrivia/.next/server/pages/manager.js:385:1)
+[0]     at __webpack_require__ (/Users/itziklerner/dev/uniper/opentrivia/.next/server/webpack-runtime.js:33:42)
+[0]     at eval (webpack-internal:///./node_modules/next/dist/build/webpack/loaders/next-route-loader/index.js?kind=PAGES&page=%2Fmanager&preferredRegion=&absolutePagePath=.%2Fsrc%2Fpages%2Fmanager.jsx&absoluteAppPath=private-next-pages%2F_app&absoluteDocumentPath=private-next-pages%2F_document&middlewareConfigBase64=e30%3D!:23:80)
+[0]     at __webpack_require__.a (/Users/itziklerner/dev/uniper/opentrivia/.next/server/webpack-runtime.js:97:13)
+[0]     at eval (webpack-internal:///./node_modules/next/dist/build/webpack/loaders/next-route-loader/index.js?kind=PAGES&page=%2Fmanager&preferredRegion=&absolutePagePath=.%2Fsrc%2Fpages%2Fmanager.jsx&absoluteAppPath=private-next-pages%2F_app&absoluteDocumentPath=private-next-pages%2F_document&middlewareConfigBase64=e30%3D!:1:21)
+[0]     at ./node_modules/next/dist/build/webpack/loaders/next-route-loader/index.js?kind=PAGES&page=%2Fmanager&preferredRegion=&absolutePagePath=.%2Fsrc%2Fpages%2Fmanager.jsx&absoluteAppPath=private-next-pages%2F_app&absoluteDocumentPath=private-next-pages%2F_document&middlewareConfigBase64=e30%3D! (/Users/itziklerner/dev/uniper/opentrivia/.next/server/pages/manager.js:55:1)
+[0]  ⨯ unhandledRejection: TypeError: __webpack_modules__[moduleId] is not a function
+[0]     at __webpack_require__ (/Users/itziklerner/dev/uniper/opentrivia/.next/server/webpack-runtime.js:33:42)
+[0]     at eval (webpack-internal:///./src/components/Loader.jsx:8:68)
+[0]     at ./src/components/Loader.jsx (/Users/itziklerner/dev/uniper/opentrivia/.next/server/pages/manager.js:110:1)
+[0]     at __webpack_require__ (/Users/itziklerner/dev/uniper/opentrivia/.next/server/webpack-runtime.js:33:42)
+[0]     at eval (webpack-internal:///./src/components/game/states/Wait.jsx:7:76)
+[0]     at ./src/components/game/states/Wait.jsx (/Users/itziklerner/dev/uniper/opentrivia/.next/server/pages/manager.js:242:1)
+[0]     at __webpack_require__ (/Users/itziklerner/dev/uniper/opentrivia/.next/server/webpack-runtime.js:33:42)
+[0]     at eval (webpack-internal:///./src/constants.js:25:86)
+[0]     at __webpack_require__.a (/Users/itziklerner/dev/uniper/opentrivia/.next/server/webpack-runtime.js:97:13)
+[0]     at eval (webpack-internal:///./src/constants.js:1:21)
+[0]     at ./src/constants.js (/Users/itziklerner/dev/uniper/opentrivia/.next/server/pages/manager.js:319:1)
+[0]     at __webpack_require__ (/Users/itziklerner/dev/uniper/opentrivia/.next/server/webpack-runtime.js:33:42)
+[0]     at eval (webpack-internal:///./src/pages/manager.jsx:11:68)
+[0]     at __webpack_require__.a (/Users/itziklerner/dev/uniper/opentrivia/.next/server/webpack-runtime.js:97:13)
+[0]     at eval (webpack-internal:///./src/pages/manager.jsx:1:21)
+[0]  ⨯ unhandledRejection: TypeError: __webpack_modules__[moduleId] is not a function
+[0]     at __webpack_require__ (/Users/itziklerner/dev/uniper/opentrivia/.next/server/webpack-runtime.js:33:42)
+[0]     at eval (webpack-internal:///./src/components/game/GameWrapper.jsx:8:68)
+[0]     at __webpack_require__.a (/Users/itziklerner/dev/uniper/opentrivia/.next/server/webpack-runtime.js:97:13)
+[0]     at eval (webpack-internal:///./src/components/game/GameWrapper.jsx:1:21)
+[0]     at ./src/components/game/GameWrapper.jsx (/Users/itziklerner/dev/uniper/opentrivia/.next/server/pages/manager.js:143:1)
+[0]     at __webpack_require__ (/Users/itziklerner/dev/uniper/opentrivia/.next/server/webpack-runtime.js:33:42)
+[0]     at eval (webpack-internal:///./src/pages/manager.jsx:9:86)
+[0]     at __webpack_require__.a (/Users/itziklerner/dev/uniper/opentrivia/.next/server/webpack-runtime.js:97:13)
+[0]     at eval (webpack-internal:///./src/pages/manager.jsx:1:21)
+[0]     at ./src/pages/manager.jsx (/Users/itziklerner/dev/uniper/opentrivia/.next/server/pages/manager.js:385:1)
+[0]     at __webpack_require__ (/Users/itziklerner/dev/uniper/opentrivia/.next/server/webpack-runtime.js:33:42)
+[0]     at eval (webpack-internal:///./node_modules/next/dist/build/webpack/loaders/next-route-loader/index.js?kind=PAGES&page=%2Fmanager&preferredRegion=&absolutePagePath=.%2Fsrc%2Fpages%2Fmanager.jsx&absoluteAppPath=private-next-pages%2F_app&absoluteDocumentPath=private-next-pages%2F_document&middlewareConfigBase64=e30%3D!:23:80)
+[0]     at __webpack_require__.a (/Users/itziklerner/dev/uniper/opentrivia/.next/server/webpack-runtime.js:97:13)
+[0]     at eval (webpack-internal:///./node_modules/next/dist/build/webpack/loaders/next-route-loader/index.js?kind=PAGES&page=%2Fmanager&preferredRegion=&absolutePagePath=.%2Fsrc%2Fpages%2Fmanager.jsx&absoluteAppPath=private-next-pages%2F_app&absoluteDocumentPath=private-next-pages%2F_document&middlewareConfigBase64=e30%3D!:1:21)
+[0]     at ./node_modules/next/dist/build/webpack/loaders/next-route-loader/index.js?kind=PAGES&page=%2Fmanager&preferredRegion=&absolutePagePath=.%2Fsrc%2Fpages%2Fmanager.jsx&absoluteAppPath=private-next-pages%2F_app&absoluteDocumentPath=private-next-pages%2F_document&middlewareConfigBase64=e30%3D! (/Users/itziklerner/dev/uniper/opentrivia/.next/server/pages/manager.js:55:1)
+[0]  ⨯ unhandledRejection: TypeError: __webpack_modules__[moduleId] is not a function
+[0]     at __webpack_require__ (/Users/itziklerner/dev/uniper/opentrivia/.next/server/webpack-runtime.js:33:42)
+[0]     at eval (webpack-internal:///./src/components/ManagerPassword.jsx:8:68)
+[0]     at __webpack_require__.a (/Users/itziklerner/dev/uniper/opentrivia/.next/server/webpack-runtime.js:97:13)
+[0]     at eval (webpack-internal:///./src/components/ManagerPassword.jsx:1:21)
+[0]     at ./src/components/ManagerPassword.jsx (/Users/itziklerner/dev/uniper/opentrivia/.next/server/pages/manager.js:121:1)
+[0]     at __webpack_require__ (/Users/itziklerner/dev/uniper/opentrivia/.next/server/webpack-runtime.js:33:42)
+[0]     at eval (webpack-internal:///./src/pages/manager.jsx:10:85)
+[0]     at __webpack_require__.a (/Users/itziklerner/dev/uniper/opentrivia/.next/server/webpack-runtime.js:97:13)
+[0]     at eval (webpack-internal:///./src/pages/manager.jsx:1:21)
+[0]     at ./src/pages/manager.jsx (/Users/itziklerner/dev/uniper/opentrivia/.next/server/pages/manager.js:385:1)
+[0]     at __webpack_require__ (/Users/itziklerner/dev/uniper/opentrivia/.next/server/webpack-runtime.js:33:42)
+[0]     at eval (webpack-internal:///./node_modules/next/dist/build/webpack/loaders/next-route-loader/index.js?kind=PAGES&page=%2Fmanager&preferredRegion=&absolutePagePath=.%2Fsrc%2Fpages%2Fmanager.jsx&absoluteAppPath=private-next-pages%2F_app&absoluteDocumentPath=private-next-pages%2F_document&middlewareConfigBase64=e30%3D!:23:80)
+[0]     at __webpack_require__.a (/Users/itziklerner/dev/uniper/opentrivia/.next/server/webpack-runtime.js:97:13)
+[0]     at eval (webpack-internal:///./node_modules/next/dist/build/webpack/loaders/next-route-loader/index.js?kind=PAGES&page=%2Fmanager&preferredRegion=&absolutePagePath=.%2Fsrc%2Fpages%2Fmanager.jsx&absoluteAppPath=private-next-pages%2F_app&absoluteDocumentPath=private-next-pages%2F_document&middlewareConfigBase64=e30%3D!:1:21)
+[0]     at ./node_modules/next/dist/build/webpack/loaders/next-route-loader/index.js?kind=PAGES&page=%2Fmanager&preferredRegion=&absolutePagePath=.%2Fsrc%2Fpages%2Fmanager.jsx&absoluteAppPath=private-next-pages%2F_app&absoluteDocumentPath=private-next-pages%2F_document&middlewareConfigBase64=e30%3D! (/Users/itziklerner/dev/uniper/opentrivia/.next/server/pages/manager.js:55:1)
+[0]  ⨯ unhandledRejection: TypeError: __webpack_modules__[moduleId] is not a function
+[0]     at __webpack_require__ (/Users/itziklerner/dev/uniper/opentrivia/.next/server/webpack-runtime.js:33:42)
+[0]     at eval (webpack-internal:///./src/components/Loader.jsx:8:68)
+[0]     at ./src/components/Loader.jsx (/Users/itziklerner/dev/uniper/opentrivia/.next/server/pages/manager.js:110:1)
+[0]     at __webpack_require__ (/Users/itziklerner/dev/uniper/opentrivia/.next/server/webpack-runtime.js:33:42)
+[0]     at eval (webpack-internal:///./src/components/game/states/Wait.jsx:7:76)
+[0]     at ./src/components/game/states/Wait.jsx (/Users/itziklerner/dev/uniper/opentrivia/.next/server/pages/manager.js:242:1)
+[0]     at __webpack_require__ (/Users/itziklerner/dev/uniper/opentrivia/.next/server/webpack-runtime.js:33:42)
+[0]     at eval (webpack-internal:///./src/constants.js:25:86)
+[0]     at __webpack_require__.a (/Users/itziklerner/dev/uniper/opentrivia/.next/server/webpack-runtime.js:97:13)
+[0]     at eval (webpack-internal:///./src/constants.js:1:21)
+[0]     at ./src/constants.js (/Users/itziklerner/dev/uniper/opentrivia/.next/server/pages/manager.js:319:1)
+[0]     at __webpack_require__ (/Users/itziklerner/dev/uniper/opentrivia/.next/server/webpack-runtime.js:33:42)
+[0]     at eval (webpack-internal:///./src/pages/manager.jsx:11:68)
+[0]     at __webpack_require__.a (/Users/itziklerner/dev/uniper/opentrivia/.next/server/webpack-runtime.js:97:13)
+[0]     at eval (webpack-internal:///./src/pages/manager.jsx:1:21)
+[0]  ⨯ unhandledRejection: TypeError: __webpack_modules__[moduleId] is not a function
+[0]     at __webpack_require__ (/Users/itziklerner/dev/uniper/opentrivia/.next/server/webpack-runtime.js:33:42)
+[0]     at eval (webpack-internal:///./src/components/Loader.jsx:8:68)
+[0]     at ./src/components/Loader.jsx (/Users/itziklerner/dev/uniper/opentrivia/.next/server/pages/manager.js:110:1)
+[0]     at __webpack_require__ (/Users/itziklerner/dev/uniper/opentrivia/.next/server/webpack-runtime.js:33:42)
+[0]     at eval (webpack-internal:///./src/components/game/states/Wait.jsx:7:76)
+[0]     at ./src/components/game/states/Wait.jsx (/Users/itziklerner/dev/uniper/opentrivia/.next/server/pages/manager.js:242:1)
+[0]     at __webpack_require__ (/Users/itziklerner/dev/uniper/opentrivia/.next/server/webpack-runtime.js:33:42)
+[0]     at eval (webpack-internal:///./src/constants.js:25:86)
+[0]     at __webpack_require__.a (/Users/itziklerner/dev/uniper/opentrivia/.next/server/webpack-runtime.js:97:13)
+[0]     at eval (webpack-internal:///./src/constants.js:1:21)
+[0]     at ./src/constants.js (/Users/itziklerner/dev/uniper/opentrivia/.next/server/pages/manager.js:319:1)
+[0]     at __webpack_require__ (/Users/itziklerner/dev/uniper/opentrivia/.next/server/webpack-runtime.js:33:42)
+[0]     at eval (webpack-internal:///./src/pages/manager.jsx:11:68)
+[0]     at __webpack_require__.a (/Users/itziklerner/dev/uniper/opentrivia/.next/server/webpack-runtime.js:97:13)
+[0]     at eval (webpack-internal:///./src/pages/manager.jsx:1:21)
+[0]  ⨯ unhandledRejection: TypeError: __webpack_modules__[moduleId] is not a function
+[0]     at __webpack_require__ (/Users/itziklerner/dev/uniper/opentrivia/.next/server/webpack-runtime.js:33:42)
+[0]     at eval (webpack-internal:///./src/components/Loader.jsx:8:68)
+[0]     at ./src/components/Loader.jsx (/Users/itziklerner/dev/uniper/opentrivia/.next/server/pages/manager.js:110:1)
+[0]     at __webpack_require__ (/Users/itziklerner/dev/uniper/opentrivia/.next/server/webpack-runtime.js:33:42)
+[0]     at eval (webpack-internal:///./src/components/game/states/Wait.jsx:7:76)
+[0]     at ./src/components/game/states/Wait.jsx (/Users/itziklerner/dev/uniper/opentrivia/.next/server/pages/manager.js:242:1)
+[0]     at __webpack_require__ (/Users/itziklerner/dev/uniper/opentrivia/.next/server/webpack-runtime.js:33:42)
+[0]     at eval (webpack-internal:///./src/constants.js:25:86)
+[0]     at __webpack_require__.a (/Users/itziklerner/dev/uniper/opentrivia/.next/server/webpack-runtime.js:97:13)
+[0]     at eval (webpack-internal:///./src/constants.js:1:21)
+[0]     at ./src/constants.js (/Users/itziklerner/dev/uniper/opentrivia/.next/server/pages/manager.js:319:1)
+[0]     at __webpack_require__ (/Users/itziklerner/dev/uniper/opentrivia/.next/server/webpack-runtime.js:33:42)
+[0]     at eval (webpack-internal:///./src/pages/manager.jsx:11:68)
+[0]     at __webpack_require__.a (/Users/itziklerner/dev/uniper/opentrivia/.next/server/webpack-runtime.js:97:13)
+[0]     at eval (webpack-internal:///./src/pages/manager.jsx:1:21)
+[0]  ⨯ unhandledRejection: TypeError: __webpack_modules__[moduleId] is not a function
+[0]     at __webpack_require__ (/Users/itziklerner/dev/uniper/opentrivia/.next/server/webpack-runtime.js:33:42)
+[0]     at eval (webpack-internal:///./src/components/Loader.jsx:8:68)
+[0]     at ./src/components/Loader.jsx (/Users/itziklerner/dev/uniper/opentrivia/.next/server/pages/manager.js:110:1)
+[0]     at __webpack_require__ (/Users/itziklerner/dev/uniper/opentrivia/.next/server/webpack-runtime.js:33:42)
+[0]     at eval (webpack-internal:///./src/components/game/states/Wait.jsx:7:76)
+[0]     at ./src/components/game/states/Wait.jsx (/Users/itziklerner/dev/uniper/opentrivia/.next/server/pages/manager.js:242:1)
+[0]     at __webpack_require__ (/Users/itziklerner/dev/uniper/opentrivia/.next/server/webpack-runtime.js:33:42)
+[0]     at eval (webpack-internal:///./src/constants.js:25:86)
+[0]     at __webpack_require__.a (/Users/itziklerner/dev/uniper/opentrivia/.next/server/webpack-runtime.js:97:13)
+[0]     at eval (webpack-internal:///./src/constants.js:1:21)
+[0]     at ./src/constants.js (/Users/itziklerner/dev/uniper/opentrivia/.next/server/pages/manager.js:319:1)
+[0]     at __webpack_require__ (/Users/itziklerner/dev/uniper/opentrivia/.next/server/webpack-runtime.js:33:42)
+[0]     at eval (webpack-internal:///./src/pages/manager.jsx:11:68)
+[0]     at __webpack_require__.a (/Users/itziklerner/dev/uniper/opentrivia/.next/server/webpack-runtime.js:97:13)
+[0]     at eval (webpack-internal:///./src/pages/manager.jsx:1:21)
+[0]  ⨯ unhandledRejection: TypeError: __webpack_modules__[moduleId] is not a function
+[0]     at __webpack_require__ (/Users/itziklerner/dev/uniper/opentrivia/.next/server/webpack-runtime.js:33:42)
+[0]     at eval (webpack-internal:///./src/components/Loader.jsx:8:68)
+[0]     at ./src/components/Loader.jsx (/Users/itziklerner/dev/uniper/opentrivia/.next/server/pages/manager.js:110:1)
+[0]     at __webpack_require__ (/Users/itziklerner/dev/uniper/opentrivia/.next/server/webpack-runtime.js:33:42)
+[0]     at eval (webpack-internal:///./src/components/game/states/Wait.jsx:7:76)
+[0]     at ./src/components/game/states/Wait.jsx (/Users/itziklerner/dev/uniper/opentrivia/.next/server/pages/manager.js:242:1)
+[0]     at __webpack_require__ (/Users/itziklerner/dev/uniper/opentrivia/.next/server/webpack-runtime.js:33:42)
+[0]     at eval (webpack-internal:///./src/constants.js:25:86)
+[0]     at __webpack_require__.a (/Users/itziklerner/dev/uniper/opentrivia/.next/server/webpack-runtime.js:97:13)
+[0]     at eval (webpack-internal:///./src/constants.js:1:21)
+[0]     at ./src/constants.js (/Users/itziklerner/dev/uniper/opentrivia/.next/server/pages/manager.js:319:1)
+[0]     at __webpack_require__ (/Users/itziklerner/dev/uniper/opentrivia/.next/server/webpack-runtime.js:33:42)
+[0]     at eval (webpack-internal:///./src/pages/manager.jsx:11:68)
+[0]     at __webpack_require__.a (/Users/itziklerner/dev/uniper/opentrivia/.next/server/webpack-runtime.js:97:13)
+[0]     at eval (webpack-internal:///./src/pages/manager.jsx:1:21)
+[0]  GET /manager 500 in 63ms
+[0]  ⨯ TypeError: __webpack_modules__[moduleId] is not a function
+[0]     at __webpack_require__ (/Users/itziklerner/dev/uniper/opentrivia/.next/server/webpack-runtime.js:33:42)
+[0]     at eval (webpack-internal:///./src/pages/manager.jsx:14:69)
+[0]     at __webpack_require__.a (/Users/itziklerner/dev/uniper/opentrivia/.next/server/webpack-runtime.js:97:13)
+[0]     at eval (webpack-internal:///./src/pages/manager.jsx:1:21)
+[0]     at ./src/pages/manager.jsx (/Users/itziklerner/dev/uniper/opentrivia/.next/server/pages/manager.js:385:1)
+[0]     at __webpack_require__ (/Users/itziklerner/dev/uniper/opentrivia/.next/server/webpack-runtime.js:33:42)
+[0]     at eval (webpack-internal:///./node_modules/next/dist/build/webpack/loaders/next-route-loader/index.js?kind=PAGES&page=%2Fmanager&preferredRegion=&absolutePagePath=.%2Fsrc%2Fpages%2Fmanager.jsx&absoluteAppPath=private-next-pages%2F_app&absoluteDocumentPath=private-next-pages%2F_document&middlewareConfigBase64=e30%3D!:23:80)
+[0]     at __webpack_require__.a (/Users/itziklerner/dev/uniper/opentrivia/.next/server/webpack-runtime.js:97:13)
+[0]     at eval (webpack-internal:///./node_modules/next/dist/build/webpack/loaders/next-route-loader/index.js?kind=PAGES&page=%2Fmanager&preferredRegion=&absolutePagePath=.%2Fsrc%2Fpages%2Fmanager.jsx&absoluteAppPath=private-next-pages%2F_app&absoluteDocumentPath=private-next-pages%2F_document&middlewareConfigBase64=e30%3D!:1:21)
+[0]     at ./node_modules/next/dist/build/webpack/loaders/next-route-loader/index.js?kind=PAGES&page=%2Fmanager&preferredRegion=&absolutePagePath=.%2Fsrc%2Fpages%2Fmanager.jsx&absoluteAppPath=private-next-pages%2F_app&absoluteDocumentPath=private-next-pages%2F_document&middlewareConfigBase64=e30%3D! (/Users/itziklerner/dev/uniper/opentrivia/.next/server/pages/manager.js:55:1)
+[0]     at __webpack_require__ (/Users/itziklerner/dev/uniper/opentrivia/.next/server/webpack-runtime.js:33:42)
+[0]     at __webpack_exec__ (/Users/itziklerner/dev/uniper/opentrivia/.next/server/pages/manager.js:581:39)
+[0]     at /Users/itziklerner/dev/uniper/opentrivia/.next/server/pages/manager.js:582:104
+[0]     at __webpack_require__.X (/Users/itziklerner/dev/uniper/opentrivia/.next/server/webpack-runtime.js:185:21)
+[0]     at /Users/itziklerner/dev/uniper/opentrivia/.next/server/pages/manager.js:582:47 {
+[0]   page: '/manager'
+[0] }
+[0]  GET /manager 500 in 5ms
+[0]  ✓ Compiled in 536ms (447 modules)
+[1] user disconnected VmQkf7aVy5R7a3CsAAAD
+[1] A user connected 0i3h-2SZgoCxPOBBAAAF
+[1] user disconnected 0i3h-2SZgoCxPOBBAAAF
+[1] A user connected zERLFfVFQYprBDNvAAAH
+[0] [?25h
+[0] npm run dev exited with code 0
+--> Sending SIGTERM to other processes..
+[1] npm run socket exited with code SIGTERM

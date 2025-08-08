@@ -12,8 +12,17 @@ export default function Username() {
   const router = useRouter()
   const [username, setUsername] = useState("")
 
-  const handleJoin = () => {
-    socket.emit("player:join", { username: username, room: player.room })
+  const handleJoin = async () => {
+    const apiResult = await socket.emit("player:join", { username: username, room: player.room })
+    
+    // If successful, trigger the state change  
+    if (apiResult && apiResult.success) {
+      dispatch({
+        type: "LOGIN",
+        payload: username,
+      })
+      router.replace("/game")
+    }
   }
 
   const handleKeyDown = (event) => {
@@ -22,21 +31,7 @@ export default function Username() {
     }
   }
 
-  useEffect(() => {
-    const handleSuccessJoin = () => {
-      dispatch({
-        type: "LOGIN",
-        payload: username,
-      })
-      router.replace("/game")
-    }
-
-    socket.on("game:successJoin", handleSuccessJoin)
-
-    return () => {
-      socket.off("game:successJoin", handleSuccessJoin)
-    }
-  }, [username, socket, dispatch, router])
+  // Removed useEffect - now handling join success directly in handleJoin
 
   return (
     <Form>
